@@ -13,13 +13,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/product/:path*",
-        destination: "/tyres/:category?/:path*", // Best effort alias
+        source: "/product/:slug*",
+        destination: "/tyres", // Simplify to main tyres page if slug is ambiguous
         permanent: true,
       },
       {
         source: "/products/:path*",
-        destination: "/tyres/:path*",
+        destination: "/tyres",
         permanent: true,
       },
     ];
