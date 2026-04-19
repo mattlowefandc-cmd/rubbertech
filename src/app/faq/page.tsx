@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { HelpCircle, ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
