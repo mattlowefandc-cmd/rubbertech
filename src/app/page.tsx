@@ -114,6 +114,7 @@ function HeroSection() {
                 fontSize: "clamp(3.5rem, 15vw, 240px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
+                textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
               }}
             >
               PRECISION
@@ -128,6 +129,7 @@ function HeroSection() {
                 fontSize: "clamp(3.5rem, 10vw, 150px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
+                textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
               }}
             >
               ENGINEERED FOR
@@ -138,6 +140,7 @@ function HeroSection() {
             <p
               ref={subcopyRef}
               className="font-mono text-black text-[16px] uppercase tracking-[1.4px] mt-4 opacity-0 pointer-events-auto"
+              style={{ textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
             >
               AUTHORISED NANKANG DEALER. FITTED IN WARWICK.
             </p>
