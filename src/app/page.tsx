@@ -103,13 +103,13 @@ function HeroSection() {
           />
         </div>
 
-        {/* Foreground Content locked to absolute positioning so they overlap */}
-        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-end pb-16 sm:pb-24 lg:pb-32 pointer-events-none">
+        {/* Foreground Content locked to center/bottom positioning */}
+        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-center sm:justify-end pb-24 sm:pb-24 lg:pb-32 pointer-events-none">
           <div className="max-w-7xl relative">
             
             <h1
               ref={headline1Ref}
-              className="absolute bottom-full mb-4 sm:mb-8 font-display font-normal text-black uppercase leading-[1.0] sm:-ml-2 pointer-events-auto break-words"
+              className="absolute bottom-full mb-12 sm:mb-8 font-display font-normal text-black uppercase leading-[1.0] sm:-ml-2 pointer-events-auto break-words"
               style={{ 
                 fontSize: "clamp(1.3rem, 12vw, 220px)", 
                 letterSpacing: "-0.01em", 
@@ -124,7 +124,7 @@ function HeroSection() {
 
             <h2
               ref={headline2Ref}
-              className="absolute bottom-full mb-4 sm:mb-8 font-display font-normal text-black uppercase leading-[1.0] sm:-ml-2 pointer-events-auto break-words"
+              className="absolute bottom-full mb-12 sm:mb-8 font-display font-normal text-black uppercase leading-[1.0] sm:-ml-2 pointer-events-auto break-words"
               style={{ 
                 fontSize: "clamp(1.2rem, 8vw, 150px)", 
                 letterSpacing: "-0.01em", 
@@ -139,7 +139,7 @@ function HeroSection() {
 
             <p
               ref={subcopyRef}
-              className="font-mono text-black text-[12px] sm:text-[16px] uppercase tracking-[1.4px] mt-2 sm:mt-4 opacity-0 pointer-events-auto"
+              className="font-mono text-black text-[12px] sm:text-[16px] uppercase tracking-[1.4px] mt-6 sm:mt-4 opacity-0 pointer-events-auto"
               style={{ textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
             >
               AUTHORISED NANKANG DEALER. FITTED IN WARWICK.
@@ -186,7 +186,7 @@ function TyreRangeSection() {
         <Link
           key={range.name}
           href={range.href}
-          className="relative group block w-full h-[60vh] min-h-[500px] border-b border-[#999999]/30 overflow-hidden"
+          className="relative group block w-full h-auto py-24 sm:h-[60vh] sm:min-h-[500px] border-b border-[#999999]/30 overflow-hidden"
         >
           {/* Subtle hover reveal for background */}
           <div className="absolute inset-0 bg-white group-hover:bg-[#f5f5f5] transition-colors duration-700" />
