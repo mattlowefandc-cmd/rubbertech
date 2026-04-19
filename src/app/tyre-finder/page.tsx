@@ -13,53 +13,63 @@ export const metadata: Metadata = {
 
 export default function TyreFinderPage() {
   return (
-    <main className="pt-24 pb-20 bg-[#0d0d0d] min-h-screen" aria-labelledby="page-title">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="pt-40 pb-20 bg-white min-h-screen" aria-labelledby="page-title">
+      <div className="max-w-[1720px] mx-auto px-6">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h1 id="page-title" className="font-display font-black text-white text-4xl md:text-5xl uppercase mb-4">
-            Find Your Exact <span className="text-[#E62020]">Nankang Fitment</span>
+        <div className="mb-24">
+          <div className="font-mono text-[#999999] text-[14px] uppercase tracking-[1.4px] mb-8">FITMENT ENGINE</div>
+          <h1 id="page-title" className="font-display font-normal text-black uppercase leading-[1.0] mb-8" style={{ fontSize: "clamp(3rem, 8vw, 110px)" }}>
+            FIND YOUR <br /> EXACT FITMENT
           </h1>
-          <p className="text-white/60 text-lg">
-            Enter your UK registration for instant OE-size matching, or search manually by width, profile, and rim size.
+          <p className="font-mono text-[#999999] text-[14px] uppercase tracking-[1.4px] max-w-2xl leading-[1.8]">
+            ENTER YOUR UK REGISTRATION FOR INSTANT OE-SIZE MATCHING, OR SEARCH MANUALLY BY WIDTH, PROFILE, AND RIM SIZE.
           </p>
         </div>
 
-        {/* Finder Component */}
-        <div className="mb-20">
+        {/* Finder Component — Already Inverted in components/TyreFinder.tsx */}
+        <div className="mb-32">
           <TyreFinder />
         </div>
 
-        {/* Info Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-[#111111] border border-white/5 rounded-2xl p-6">
-            <CheckCircle className="text-[#E62020] mb-4" size={28} />
-            <h3 className="font-display font-bold text-white text-xl uppercase mb-2">Guaranteed Fitment</h3>
-            <p className="text-white/50 text-sm leading-relaxed">
-              Our reg lookup taps into DVLA data to find your exact vehicle specifications. If in doubt, double-check your current tyre sidewalls.
+        {/* Info Cards — Architectural Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-32">
+          <div className="border border-black/10 p-10 bg-[#fcfcfc]">
+            <CheckCircle className="text-black mb-8" size={32} strokeWidth={1.5} />
+            <h3 className="font-mono text-black text-[16px] uppercase tracking-[1.4px] mb-6">Guaranteed Fitment</h3>
+            <p className="font-body text-[#999999] text-[14px] leading-relaxed">
+              Our reg lookup taps into DVLA data to find your exact vehicle specifications. If in doubt, double-check your current tyre sidewalls before ordering.
             </p>
           </div>
-          <div className="bg-[#111111] border border-white/5 rounded-2xl p-6">
-            <Info className="text-[#E62020] mb-4" size={28} />
-            <h3 className="font-display font-bold text-white text-xl uppercase mb-2">How to read your size</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-4">
-              Look for the numbers on your tyre sidewall looking like 225/40 R18 92Y.
+          <div className="border border-black/10 p-10 bg-[#fcfcfc]">
+            <Info className="text-black mb-8" size={32} strokeWidth={1.5} />
+            <h3 className="font-mono text-black text-[16px] uppercase tracking-[1.4px] mb-6">How to read your size</h3>
+            <p className="font-body text-[#999999] text-[14px] leading-relaxed mb-6">
+              Look for the numbers on your tyre sidewall looking like 225/45 R17 94W.
             </p>
-            <ul className="text-xs text-white/40 space-y-1">
-              <li><strong className="text-white">225</strong> = Width (mm)</li>
-              <li><strong className="text-white">40</strong> = Profile / Aspect Ratio</li>
-              <li><strong className="text-white">18</strong> = Rim Diameter (inches)</li>
+            <ul className="space-y-2">
+              <li className="font-mono text-[11px] text-black uppercase tracking-[1px] flex justify-between border-b border-black/5 pb-2">
+                <span>WIDTH (MM)</span>
+                <span className="text-[#999999]">225</span>
+              </li>
+              <li className="font-mono text-[11px] text-black uppercase tracking-[1px] flex justify-between border-b border-black/5 pb-2">
+                <span>PROFILE (%)</span>
+                <span className="text-[#999999]">45</span>
+              </li>
+              <li className="font-mono text-[11px] text-black uppercase tracking-[1px] flex justify-between border-b border-black/5 pb-2">
+                <span>RIM (INCHES)</span>
+                <span className="text-[#999999]">17</span>
+              </li>
             </ul>
           </div>
-          <div className="bg-[#111111] border border-white/5 rounded-2xl p-6">
-            <ShieldAlert className="text-[#E62020] mb-4" size={28} />
-            <h3 className="font-display font-bold text-white text-xl uppercase mb-2">Need Help?</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-4">
+          <div className="border border-black/10 p-10 bg-[#fcfcfc]">
+            <ShieldAlert className="text-black mb-8" size={32} strokeWidth={1.5} />
+            <h3 className="font-mono text-black text-[16px] uppercase tracking-[1.4px] mb-6">Need Help?</h3>
+            <p className="font-body text-[#999999] text-[14px] leading-relaxed mb-10">
               Not sure which Nankang model suits your driving style? Our team of specialists is here to help you choose the right pattern.
             </p>
-            <Link href="/contact" className="text-[#E62020] text-sm font-semibold hover:underline">
-              Contact an Expert →
+            <Link href="/contact" className="inline-flex items-center justify-center font-mono text-[12px] uppercase tracking-[1.4px] text-white bg-black border border-black px-8 py-3 hover:bg-transparent hover:text-black transition-colors duration-300">
+              CONTACT AN EXPERT
             </Link>
           </div>
         </div>
@@ -68,5 +78,3 @@ export default function TyreFinderPage() {
     </main>
   );
 }
-
-// FILE COMPLETE ✓
