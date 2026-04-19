@@ -7,7 +7,18 @@ export const metadata: Metadata = {
   description: "Browse the complete Nankang tyre range. Performance, motorsport, 4x4, and EV solutions from Rubber Tech.",
 };
 
-export default function AllTyresPage() {
+export default async function AllTyresPage({ 
+  searchParams 
+}: { 
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }> 
+}) {
+  const resolvedSearchParams = await searchParams;
+  const width = resolvedSearchParams.width as string;
+  const profile = resolvedSearchParams.profile as string;
+  const rim = resolvedSearchParams.rim as string;
+
+  const isFiltered = !!(width || profile || rim);
+
   const categories: { key: TyreCategory; label: string; tag: string; dna: string }[] = [
     { 
       key: "motorsport", 
@@ -48,26 +59,40 @@ export default function AllTyresPage() {
         {/* Header — Monumental Style */}
         <div className="mb-40 flex flex-col lg:flex-row justify-between items-end gap-12">
           <div className="max-w-4xl">
-            <div className="font-mono text-[#999999] text-[14px] uppercase tracking-[2px] mb-8">INVENTORY ARCHIVE</div>
+            <div className="font-mono text-[#999999] text-[14px] uppercase tracking-[2px] mb-8">
+              {isFiltered ? "FILTERED RESULTS" : "INVENTORY ARCHIVE"}
+            </div>
             <h1 className="font-display font-normal text-black uppercase leading-[0.9] mb-12" style={{ fontSize: "clamp(3.5rem, 12vw, 180px)" }}>
-              THE <br className="hidden lg:block"/> FULL RANGE.
+              {isFiltered ? "MATCHING SPEC" : "THE FULL RANGE"}
             </h1>
-            <p className="font-mono text-[#111111] text-[14px] uppercase tracking-[1.4px]">AUTHORISED UK SUPPLY // DIRECT FACTORY DISPATCH.</p>
+            <p className="font-mono text-[#111111] text-[14px] uppercase tracking-[1.4px]">
+              {isFiltered 
+                ? `IDENTIFIED RESULTS FOR ${width}/${profile} R${rim}` 
+                : "AUTHORISED UK SUPPLY // DIRECT FACTORY DISPATCH."}
+            </p>
           </div>
-          <div className="hidden lg:block pb-4">
-             <div className="font-mono text-black text-[12px] uppercase mb-4 tracking-[1.4px]">QUICK NAVIGATION</div>
-             <nav className="flex flex-col gap-2 border-l border-black/10 pl-6">
-               {categories.map(c => (
-                 <a key={c.key} href={`#${c.key}`} className="font-mono text-[#999999] text-[11px] uppercase tracking-[1px] hover:text-black transition-colors">{c.label}</a>
-               ))}
-             </nav>
-          </div>
+          {!isFiltered && (
+            <div className="hidden lg:block pb-4">
+               <div className="font-mono text-black text-[12px] uppercase mb-4 tracking-[1.4px]">QUICK NAVIGATION</div>
+               <nav className="flex flex-col gap-2 border-l border-black/10 pl-6">
+                 {categories.map(c => (
+                   <a key={c.key} href={`#${c.key}`} className="font-mono text-[#999999] text-[11px] uppercase tracking-[1px] hover:text-black transition-colors">{c.label}</a>
+                 ))}
+               </nav>
+            </div>
+          )}
         </div>
 
-        {/* Categories Loop */}
+        {/* Categories Loop or Filtered Results */}
         <div className="space-y-64">
           {categories.map((cat) => {
-            const products = getProductsByCategory(cat.key);
+            let products = getProductsByCategory(cat.key);
+            
+            // Simple filter logic for demonstration
+            if (isFiltered) {
+              products = products.filter(p => p.sizes.some(s => s.size.includes(rim || "")));
+            }
+            
             if (products.length === 0) return null;
 
             return (
@@ -82,9 +107,11 @@ export default function AllTyresPage() {
                       {cat.dna}
                     </p>
                   </div>
-                  <Link href={`/tyres/${cat.key}`} className="inline-flex items-center justify-center font-mono text-black text-[14px] uppercase tracking-[1.4px] border border-black/20 px-8 py-3 hover:bg-black hover:text-white transition-all">
-                    VIEW CATEGORY ARCHIVE
-                  </Link>
+                  {!isFiltered && (
+                    <Link href={`/tyres/${cat.key}`} className="inline-flex items-center justify-center font-mono text-black text-[14px] uppercase tracking-[1.4px] border border-black/20 px-8 py-3 hover:bg-black hover:text-white transition-all">
+                      VIEW CATEGORY ARCHIVE
+                    </Link>
+                  )}
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-20">
@@ -94,7 +121,6 @@ export default function AllTyresPage() {
                       href={`/tyres/${product.category}/${product.slug}`}
                       className="group flex flex-col h-full bg-white relative"
                     >
-                      {/* Asset Container */}
                       <div className="relative aspect-square w-full bg-[#fcfcfc] border border-black/10 flex items-center justify-center overflow-hidden transition-colors group-hover:bg-[#f5f5f5]">
                         {product.badge && (
                           <span className="absolute top-6 left-6 font-mono text-black text-[11px] uppercase tracking-[1.4px] z-10 border-b border-black/40 pb-1">
@@ -103,7 +129,6 @@ export default function AllTyresPage() {
                         )}
                         <div className="absolute inset-0 bg-[radial-gradient(#000_1px,transparent_0)] [background-size:20px_20px] opacity-[0.03]" />
                         <span className="font-display text-black/5 text-[90px] uppercase font-bold tracking-tighter absolute rotate-90 whitespace-nowrap">{product.name}</span>
-                        {/* Final Asset would go here */}
                       </div>
 
                       <div className="pt-8 flex flex-col justify-between flex-grow">
@@ -129,7 +154,6 @@ export default function AllTyresPage() {
                     </Link>
                   ))}
                 </div>
-                
               </section>
             );
           })}

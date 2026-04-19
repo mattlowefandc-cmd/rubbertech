@@ -5,9 +5,9 @@ import { getProductsByCategory, TyreCategory } from "@/data/products";
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
   const { category } = await params;
-  const categoryStr = category.toUpperCase().replace("-", " ");
+  const categoryStr = category.toLowerCase().replace("-", " ");
   return {
-    title: `${categoryStr} TYRES | RUBBER TECH`,
+    title: `${categoryStr.toUpperCase()} TYRES | RUBBER TECH`,
     description: `Shop our range of Nankang ${categoryStr} tyres. Official UK supplier.`,
   };
 }
@@ -41,7 +41,9 @@ const CATEGORY_DNA: Record<string, { title: string; techHeader: string; body: st
 };
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
-  const { category } = await params;
+  const resolvedParams = await params;
+  const category = resolvedParams.category.toLowerCase();
+  
   const validCategories = ["car", "motorsport", "4x4", "suv", "ev", "commercial", "winter", "all-season", "motorcycle", "retro", "runflat"];
   if (!validCategories.includes(category)) {
     notFound();

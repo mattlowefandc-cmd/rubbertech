@@ -10,7 +10,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = getProductBySlug(slug.toLowerCase());
   if (!product) return { title: "Product Not Found" };
   return {
     title: `${product.name.toUpperCase()} | RUBBER TECH`,
@@ -19,7 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { category, slug } = await params;
+  const resolvedParams = await params;
+  const category = resolvedParams.category.toLowerCase();
+  const slug = resolvedParams.slug.toLowerCase();
+  
   const product = getProductBySlug(slug);
   if (!product || product.category !== category) {
     notFound();
