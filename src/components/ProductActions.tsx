@@ -12,7 +12,7 @@ interface ProductActionsProps {
     category: string;
     slug: string;
     priceFrom?: number;
-    sizes: { size: string; loadRating: string; speedIndex: string; wetGrip?: string }[];
+    sizes: { size: string; loadRating: string | number; speedIndex: string; wetGrip?: string }[];
   };
 }
 
