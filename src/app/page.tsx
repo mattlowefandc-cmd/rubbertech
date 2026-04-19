@@ -111,7 +111,7 @@ function HeroSection() {
               ref={headline1Ref}
               className="absolute bottom-full mb-6 sm:mb-8 font-display font-normal text-black uppercase leading-[0.9] sm:leading-[1.0] -ml-2 pointer-events-auto"
               style={{ 
-                fontSize: "clamp(2.8rem, 12vw, 220px)", 
+                fontSize: "clamp(1.8rem, 12vw, 220px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
                 textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
@@ -126,7 +126,7 @@ function HeroSection() {
               ref={headline2Ref}
               className="absolute bottom-full mb-6 sm:mb-8 font-display font-normal text-black uppercase leading-[0.9] sm:leading-[1.0] -ml-2 pointer-events-auto"
               style={{ 
-                fontSize: "clamp(2.5rem, 8vw, 150px)", 
+                fontSize: "clamp(1.6rem, 8vw, 150px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
                 textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
@@ -197,10 +197,10 @@ function TyreRangeSection() {
             </div>
 
             <div>
-              <h2 className="font-display text-black uppercase leading-[1.0]" style={{ fontSize: "clamp(3rem, 8vw, 120px)" }}>
+              <h2 className="font-display text-black uppercase leading-[0.9]" style={{ fontSize: "clamp(1.7rem, 9vw, 120px)" }}>
                 {range.name}
               </h2>
-              <p className="font-mono text-[#999999] text-[14px] uppercase tracking-[1.4px] mt-6 max-w-lg">
+              <p className="font-mono text-[#999999] text-[13px] uppercase tracking-[1.4px] mt-6 max-w-lg">
                 {range.desc}
               </p>
             </div>
