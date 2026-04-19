@@ -109,9 +109,9 @@ function HeroSection() {
             
             <h1
               ref={headline1Ref}
-              className="absolute bottom-full mb-6 sm:mb-8 font-display font-normal text-black uppercase leading-[0.9] sm:leading-[1.0] -ml-2 pointer-events-auto"
+              className="absolute bottom-full mb-4 sm:mb-8 font-display font-normal text-black uppercase leading-[1.0] sm:-ml-2 pointer-events-auto break-words"
               style={{ 
-                fontSize: "clamp(1.8rem, 12vw, 220px)", 
+                fontSize: "clamp(1.3rem, 12vw, 220px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
                 textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
@@ -124,9 +124,9 @@ function HeroSection() {
 
             <h2
               ref={headline2Ref}
-              className="absolute bottom-full mb-6 sm:mb-8 font-display font-normal text-black uppercase leading-[0.9] sm:leading-[1.0] -ml-2 pointer-events-auto"
+              className="absolute bottom-full mb-4 sm:mb-8 font-display font-normal text-black uppercase leading-[1.0] sm:-ml-2 pointer-events-auto break-words"
               style={{ 
-                fontSize: "clamp(1.6rem, 8vw, 150px)", 
+                fontSize: "clamp(1.2rem, 8vw, 150px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
                 textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
@@ -139,7 +139,7 @@ function HeroSection() {
 
             <p
               ref={subcopyRef}
-              className="font-mono text-black text-[12px] sm:text-[16px] uppercase tracking-[1.4px] mt-4 opacity-0 pointer-events-auto"
+              className="font-mono text-black text-[12px] sm:text-[16px] uppercase tracking-[1.4px] mt-2 sm:mt-4 opacity-0 pointer-events-auto"
               style={{ textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
             >
               AUTHORISED NANKANG DEALER. FITTED IN WARWICK.
@@ -197,10 +197,10 @@ function TyreRangeSection() {
             </div>
 
             <div>
-              <h2 className="font-display text-black uppercase leading-[0.9]" style={{ fontSize: "clamp(1.7rem, 9vw, 120px)" }}>
+              <h2 className="font-display text-black uppercase leading-[1.0] break-words" style={{ fontSize: "clamp(1.3rem, 10vw, 120px)" }}>
                 {range.name}
               </h2>
-              <p className="font-mono text-[#999999] text-[13px] uppercase tracking-[1.4px] mt-6 max-w-lg">
+              <p className="font-mono text-[#999999] text-[12px] sm:text-[13px] uppercase tracking-[1.4px] mt-4 sm:mt-6 max-w-lg">
                 {range.desc}
               </p>
             </div>
