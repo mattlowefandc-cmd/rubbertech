@@ -92,7 +92,7 @@ function HeroSection() {
       <div ref={pinRef} className="h-screen w-full relative flex items-center justify-center overflow-hidden bg-white">
         
         {/* Transparent Tyre Sequence centered */}
-        <div className="absolute inset-0 flex items-center justify-center scale-[1.3] lg:scale-[1.7] translate-y-10 lg:translate-y-20 z-0 bg-white">
+        <div className="absolute inset-0 flex items-center justify-center scale-[0.7] sm:scale-[0.9] md:scale-[1.1] lg:scale-[1.3] translate-y-6 sm:translate-y-10 md:translate-y-16 lg:translate-y-24 z-0 bg-white">
           <TyreSequence
             ref={tyreRef}
             mode="scrub" // Fully controlled by GSAP
@@ -104,14 +104,14 @@ function HeroSection() {
         </div>
 
         {/* Foreground Content locked to absolute positioning so they overlap */}
-        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-end pb-24 lg:pb-32 pointer-events-none">
+        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-end pb-16 sm:pb-24 lg:pb-32 pointer-events-none">
           <div className="max-w-7xl relative">
             
             <h1
               ref={headline1Ref}
-              className="absolute bottom-full mb-8 font-display font-normal text-black uppercase leading-[1.0] -ml-2 pointer-events-auto"
+              className="absolute bottom-full mb-6 sm:mb-8 font-display font-normal text-black uppercase leading-[0.9] sm:leading-[1.0] -ml-2 pointer-events-auto"
               style={{ 
-                fontSize: "clamp(3.5rem, 15vw, 240px)", 
+                fontSize: "clamp(2.8rem, 12vw, 220px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
                 textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
@@ -124,9 +124,9 @@ function HeroSection() {
 
             <h2
               ref={headline2Ref}
-              className="absolute bottom-full mb-8 font-display font-normal text-black uppercase leading-[1.0] -ml-2 pointer-events-auto"
+              className="absolute bottom-full mb-6 sm:mb-8 font-display font-normal text-black uppercase leading-[0.9] sm:leading-[1.0] -ml-2 pointer-events-auto"
               style={{ 
-                fontSize: "clamp(3.5rem, 10vw, 150px)", 
+                fontSize: "clamp(2.5rem, 8vw, 150px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
                 textShadow: "0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(255,255,255,0.5)"
@@ -139,7 +139,7 @@ function HeroSection() {
 
             <p
               ref={subcopyRef}
-              className="font-mono text-black text-[16px] uppercase tracking-[1.4px] mt-4 opacity-0 pointer-events-auto"
+              className="font-mono text-black text-[12px] sm:text-[16px] uppercase tracking-[1.4px] mt-4 opacity-0 pointer-events-auto"
               style={{ textShadow: "0 0 8px rgba(255,255,255,0.8)" }}
             >
               AUTHORISED NANKANG DEALER. FITTED IN WARWICK.
