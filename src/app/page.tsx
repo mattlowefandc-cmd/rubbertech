@@ -145,16 +145,16 @@ function HeroSection() {
               AUTHORISED NANKANG DEALER. FITTED IN WARWICK.
             </p>
 
-            <div ref={ctasRef} className="mt-8 sm:mt-12 flex flex-wrap items-center gap-6 opacity-0 pointer-events-auto">
+            <div ref={ctasRef} className="mt-10 sm:mt-12 flex flex-wrap items-center gap-6 opacity-0 pointer-events-auto">
               <Link
                 href="/tyre-finder"
-                className="inline-flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-white bg-black border border-black rounded-full px-8 py-4 hover:bg-transparent hover:text-black transition-colors duration-300"
+                className="inline-flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-white bg-black border border-black rounded-full px-10 py-5 sm:px-8 sm:py-4 hover:bg-transparent hover:text-black transition-colors duration-300 min-h-[48px]"
               >
                 FIND YOUR TYRES
               </Link>
               <Link
                 href="/tyres"
-                className="inline-flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-black border border-[#999999] rounded-[6px] px-6 py-3 hover:border-black transition-colors duration-300"
+                className="inline-flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-black border border-[#999999] rounded-[6px] px-8 py-4 sm:px-6 sm:py-3 hover:border-black transition-colors duration-300 min-h-[48px]"
               >
                 DISCOVER RANGE
               </Link>
@@ -259,7 +259,7 @@ function ProductSpotlight() {
             </Link>
           </div>
 
-          <div className="w-full lg:w-1/2 h-[600px] bg-[#f5f5f5] flex items-center justify-center relative overflow-hidden">
+          <div className="w-full lg:w-1/2 h-[400px] lg:h-[600px] bg-[#f5f5f5] flex items-center justify-center relative overflow-hidden">
              {/* Architectural aesthetic box behind tyre */}
              <div className="absolute right-0 top-0 w-[1px] h-full bg-[#999999]/30" />
              <div className="absolute right-0 bottom-0 w-full h-[1px] bg-[#999999]/30" />

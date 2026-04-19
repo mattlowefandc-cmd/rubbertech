@@ -50,7 +50,7 @@ export default function Header() {
             <div className="flex-1 flex justify-start">
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity"
+                className="min-h-[48px] px-4 -ml-4 font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity flex items-center"
                 aria-label={mobileOpen ? "CLOSE MENU" : "MENU"}
               >
                 {mobileOpen ? "CLOSE" : "MENU"}
@@ -59,7 +59,7 @@ export default function Header() {
 
             {/* Center Logo */}
             <div className="flex-shrink-0 text-center">
-              <Link href="/" className="inline-block" aria-label="Rubber Tech Home">
+              <Link href="/" className="inline-flex items-center justify-center min-h-[48px] px-6" aria-label="Rubber Tech Home">
                 <span className="font-display text-black text-[24px] sm:text-[29px] leading-none uppercase tracking-widest block">
                   RUBBER TECH
                 </span>
@@ -67,19 +67,19 @@ export default function Header() {
             </div>
 
             {/* Right Nav (SEARCH/BAG) */}
-            <div className="flex-1 flex justify-end items-center gap-6 sm:gap-10">
+            <div className="flex-1 flex justify-end items-center gap-2 sm:gap-10">
               <Link
                 href="/tyre-finder"
-                className="hidden sm:block font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity"
+                className="hidden sm:inline-flex items-center justify-center min-h-[48px] px-4 font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity"
               >
                 SEARCH
               </Link>
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative flex items-center gap-3 font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity group"
+                className="relative flex items-center justify-center min-h-[48px] px-4 -mr-4 font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity group"
                 aria-label="OPEN SHOPPING BAG"
               >
-                <span className="hidden sm:block">BAG</span>
+                <span className="hidden sm:block mr-3">BAG</span>
                 <div className="relative">
                   <ShoppingBag size={20} strokeWidth={1.5} />
                   {itemCount > 0 && (

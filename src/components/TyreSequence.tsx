@@ -273,8 +273,8 @@ const TyreSequence = forwardRef<TyreSequenceHandle, TyreSequenceProps>(
         {/* Canvas element */}
         <canvas
           ref={canvasRef}
-          width={width * dpr}
-          height={height * dpr}
+          width={isMobile ? Math.min(width, 1000) * dpr : width * dpr}
+          height={isMobile ? Math.min(height, 600) * dpr : height * dpr}
           className="w-full h-full"
           style={{
             display: "block",
