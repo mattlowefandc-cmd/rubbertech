@@ -83,7 +83,13 @@ export default async function ProductPage({ params }: Props) {
              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" 
                   style={{ backgroundImage: "linear-gradient(#000 1px, transparent 0), linear-gradient(90deg, #000 1px, transparent 0)", backgroundSize: "10% 10%", opacity: 0.03 }} />
              
-             <TyreSequence mode="autoplay" width={700} height={700} className="relative z-10 scale-110 lg:scale-125" />
+             <div className="relative z-10 w-full h-full p-12">
+               <img 
+                 src={product.image} 
+                 alt={product.name} 
+                 className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-700" 
+               />
+             </div>
              
              {/* Technical Corner Marking */}
              <div className="absolute top-8 right-8 text-right">

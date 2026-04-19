@@ -264,7 +264,11 @@ function ProductSpotlight() {
              <div className="absolute right-0 top-0 w-[1px] h-full bg-[#999999]/30" />
              <div className="absolute right-0 bottom-0 w-full h-[1px] bg-[#999999]/30" />
              
-             <TyreSequence mode="autoplay" scrollProgress={0} width={450} height={450} className="relative z-10 bg-white scale-110 lg:scale-125" />
+             <img 
+               src={featured.image} 
+               alt={featured.name} 
+               className="relative z-10 w-full h-full object-contain scale-110 lg:scale-125 transition-transform duration-700 p-12" 
+             />
           </div>
 
         </div>
