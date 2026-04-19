@@ -92,7 +92,7 @@ function HeroSection() {
       <div ref={pinRef} className="h-screen w-full relative flex items-center justify-center overflow-hidden bg-white">
         
         {/* Transparent Tyre Sequence centered */}
-        <div className="absolute inset-0 flex items-center justify-center scale-[1.0] lg:scale-[1.3] -translate-y-10 lg:-translate-y-16 z-0 bg-white">
+        <div className="absolute inset-0 flex items-center justify-center scale-[1.3] lg:scale-[1.7] translate-y-10 lg:translate-y-20 z-0 bg-white">
           <TyreSequence
             ref={tyreRef}
             mode="scrub" // Fully controlled by GSAP
@@ -114,8 +114,6 @@ function HeroSection() {
                 fontSize: "clamp(3.5rem, 15vw, 240px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
-                WebkitTextStroke: "1px white",
-                textShadow: "0 0 30px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.5)"
               }}
             >
               PRECISION
@@ -130,8 +128,6 @@ function HeroSection() {
                 fontSize: "clamp(3.5rem, 10vw, 150px)", 
                 letterSpacing: "-0.01em", 
                 opacity: 0,
-                WebkitTextStroke: "1px white",
-                textShadow: "0 0 30px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.5)"
               }}
             >
               ENGINEERED FOR
@@ -142,7 +138,6 @@ function HeroSection() {
             <p
               ref={subcopyRef}
               className="font-mono text-black text-[16px] uppercase tracking-[1.4px] mt-4 opacity-0 pointer-events-auto"
-              style={{ textShadow: "0 0 10px white" }}
             >
               AUTHORISED NANKANG DEALER. FITTED IN WARWICK.
             </p>
