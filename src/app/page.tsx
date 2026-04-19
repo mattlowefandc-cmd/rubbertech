@@ -37,14 +37,6 @@ function HeroSection() {
           end: "+=3000", // 300vh scroll distance
           pin: pinRef.current,
           scrub: 1, // Smooth scrub
-          onUpdate: (self) => {
-            // Scrub the tyre sequence frame based on total timeline progress
-            if (tyreRef.current) {
-              // Instead of manually calculating progress, we can just pass it directly
-              // If `TyreSequence` had a `setScrubProgress` we'd trigger it here.
-              // But we can also animate a proxy object.
-            }
-          }
         }
       });
 
@@ -97,17 +89,17 @@ function HeroSection() {
   return (
     <section ref={containerRef} id="hero" className="relative w-full bg-white" aria-label="Hero section">
       {/* Pinned section that stays in viewport */}
-      <div ref={pinRef} className="h-screen w-full relative flex items-center justify-center overflow-hidden">
+      <div ref={pinRef} className="h-screen w-full relative flex items-center justify-center overflow-hidden bg-white">
         
         {/* Transparent Tyre Sequence centered */}
-        <div className="absolute inset-0 flex items-center justify-center scale-[1.2] lg:scale-[1.8] translate-y-10 z-0">
+        <div className="absolute inset-0 flex items-center justify-center scale-[1.0] lg:scale-[1.3] -translate-y-10 lg:-translate-y-16 z-0 bg-white">
           <TyreSequence
             ref={tyreRef}
             mode="scrub" // Fully controlled by GSAP
-            scrollProgress={0} // We will use setScrubProgress instead
+            scrollProgress={0} 
             width={1000}
             height={1000}
-            className="pointer-events-none bg-white opacity-90"
+            className="pointer-events-none"
           />
         </div>
 
@@ -118,7 +110,13 @@ function HeroSection() {
             <h1
               ref={headline1Ref}
               className="absolute bottom-full mb-8 font-display font-normal text-black uppercase leading-[1.0] -ml-2 pointer-events-auto"
-              style={{ fontSize: "clamp(3.5rem, 15vw, 240px)", letterSpacing: "-0.01em", opacity: 0 }}
+              style={{ 
+                fontSize: "clamp(3.5rem, 15vw, 240px)", 
+                letterSpacing: "-0.01em", 
+                opacity: 0,
+                WebkitTextStroke: "1px white",
+                textShadow: "0 0 30px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.5)"
+              }}
             >
               PRECISION
               <br />
@@ -128,7 +126,13 @@ function HeroSection() {
             <h2
               ref={headline2Ref}
               className="absolute bottom-full mb-8 font-display font-normal text-black uppercase leading-[1.0] -ml-2 pointer-events-auto"
-              style={{ fontSize: "clamp(3.5rem, 10vw, 150px)", letterSpacing: "-0.01em", opacity: 0 }}
+              style={{ 
+                fontSize: "clamp(3.5rem, 10vw, 150px)", 
+                letterSpacing: "-0.01em", 
+                opacity: 0,
+                WebkitTextStroke: "1px white",
+                textShadow: "0 0 30px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.5)"
+              }}
             >
               ENGINEERED FOR
               <br />
@@ -137,7 +141,8 @@ function HeroSection() {
 
             <p
               ref={subcopyRef}
-              className="font-mono text-[#999999] text-[16px] uppercase tracking-[1.4px] mt-4 opacity-0 pointer-events-auto"
+              className="font-mono text-black text-[16px] uppercase tracking-[1.4px] mt-4 opacity-0 pointer-events-auto"
+              style={{ textShadow: "0 0 10px white" }}
             >
               AUTHORISED NANKANG DEALER. FITTED IN WARWICK.
             </p>

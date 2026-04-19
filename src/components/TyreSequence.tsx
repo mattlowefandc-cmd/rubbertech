@@ -31,21 +31,9 @@ export interface TyreSequenceHandle {
   setScrubProgress: (progress: number) => void;
 }
 
-// Frame naming patterns to try in order
-const FRAME_PATTERNS = [
-  (i: number) => `/sequences/tyre/frame_${String(i).padStart(4, "0")}.png`,
-  (i: number) => `/sequences/tyre/frame_${String(i).padStart(4, "0")}.jpg`,
-  (i: number) => `/sequences/tyre/frame_${String(i).padStart(3, "0")}.png`,
-  (i: number) => `/sequences/tyre/frame_${String(i).padStart(3, "0")}.jpg`,
-  (i: number) => `/sequences/tyre/${String(i).padStart(4, "0")}.png`,
-  (i: number) => `/sequences/tyre/${String(i).padStart(4, "0")}.jpg`,
-  (i: number) => `/sequences/tyre/${String(i).padStart(3, "0")}.png`,
-  (i: number) => `/sequences/tyre/${String(i).padStart(3, "0")}.jpg`,
-  (i: number) => `/sequences/tyre/frame_${i}.png`,
-  (i: number) => `/sequences/tyre/frame_${i}.jpg`,
-  (i: number) => `/sequences/tyre/${i}.png`,
-  (i: number) => `/sequences/tyre/${i}.jpg`,
-];
+// Hardcoded for performance - avoiding slow auto-detection
+const FRAME_COUNT = 160;
+const FRAME_PATTERN = (i: number) => `/sequences/tyre/frame_${String(i).padStart(3, "0")}.jpg`;
 
 // Mobile: load every Nth frame to reduce memory
 const MOBILE_FRAME_SKIP = 3;
@@ -126,7 +114,10 @@ const TyreSequence = forwardRef<TyreSequenceHandle, TyreSequenceProps>(
       const img = frames[clampedIndex];
       if (!img || !img.complete || !img.naturalWidth) return;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Fill background with solid white
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       // Center-fit image in canvas
       const scale = Math.min(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
       const drawW = img.naturalWidth * scale;
@@ -156,41 +147,8 @@ const TyreSequence = forwardRef<TyreSequenceHandle, TyreSequenceProps>(
       let cancelled = false;
 
       async function loadFrames() {
-        const detected = await detectPattern();
-
-        if (!detected || detected.count === 0) {
-          setHasSequence(false);
-          // Draw a placeholder tyre silhouette on canvas
-          const canvas = canvasRef.current;
-          if (canvas) {
-            const ctx = canvas.getContext("2d");
-            if (ctx) {
-              ctx.fillStyle = "rgba(0,0,0,0.05)";
-              ctx.beginPath();
-              ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width * 0.42, 0, Math.PI * 2);
-              ctx.fill();
-              ctx.strokeStyle = "rgba(0,0,0,0.2)";
-              ctx.lineWidth = canvas.width * 0.08;
-              ctx.stroke();
-              // Inner circle
-              ctx.clearRect(
-                canvas.width / 2 - canvas.width * 0.22,
-                canvas.height / 2 - canvas.height * 0.22,
-                canvas.width * 0.44,
-                canvas.height * 0.44
-              );
-              ctx.fillStyle = "rgba(0,0,0,0.7)";
-              ctx.beginPath();
-              ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width * 0.22, 0, Math.PI * 2);
-              ctx.fill();
-            }
-          }
-          onReady?.();
-          setIsReady(true);
-          return;
-        }
-
-        const { pattern, count } = detected;
+        const count = FRAME_COUNT;
+        const pattern = FRAME_PATTERN;
         totalFramesRef.current = count;
 
         // Build list of frame indices to load (skip on mobile)
