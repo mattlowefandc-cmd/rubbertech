@@ -11,7 +11,7 @@ interface ProductActionsProps {
     name: string;
     category: string;
     slug: string;
-    priceFrom: number;
+    priceFrom?: number;
     sizes: { size: string; loadRating: string; speedIndex: string; wetGrip?: string }[];
   };
 }
@@ -31,7 +31,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
       name: product.name,
       category: product.category,
       slug: product.slug,
-      price: product.priceFrom, // Simplifying price logic for now
+      price: product.priceFrom || 0, // Simplifying price logic for now
       size: selectedSize,
     }, quantity);
 
@@ -47,7 +47,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
       name: product.name,
       category: product.category,
       slug: product.slug,
-      price: product.priceFrom,
+      price: product.priceFrom || 0,
       size: selectedSize,
     }, quantity);
     router.push("/checkout");
