@@ -99,14 +99,34 @@ function HeroSection() {
             scrollProgress={0} 
             width={2000}
             height={1200}
-            className="w-full h-full"
+            className="w-full h-full -translate-y-12 sm:translate-y-0"
           />
         </div>
 
-        {/* Foreground Content locked to center/bottom positioning */}
-        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-center sm:justify-end pb-24 sm:pb-24 lg:pb-32 pointer-events-none">
-          <div className="max-w-7xl relative">
-            
+        {/* Foreground Content: Decoupled for Mobile Optimization */}
+        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-between py-24 sm:justify-end sm:pb-32 pointer-events-none">
+          
+          {/* Top Section (Mobile Only Headlines) */}
+          <div className="relative z-20 sm:hidden">
+            <div className="relative h-32">
+              <h1
+                ref={headline1Ref}
+                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto break-words"
+                style={{ fontSize: "clamp(1.8rem, 12vw, 220px)" }}
+              >
+                PRECISION<br />RUBBER
+              </h1>
+              <h2
+                ref={headline2Ref}
+                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto break-words"
+                style={{ fontSize: "clamp(1.6rem, 10vw, 150px)" }}
+              >
+                ENGINEERED FOR<br />PERFORMANCE
+              </h2>
+            </div>
+          </div>
+
+          <div className="max-w-7xl relative sm:block hidden">
             <h1
               ref={headline1Ref}
               className="absolute bottom-full mb-12 sm:mb-8 font-display font-normal text-black uppercase leading-[1.0] sm:-ml-2 pointer-events-auto break-words"
@@ -136,7 +156,9 @@ function HeroSection() {
               <br />
               PERFORMANCE
             </h2>
+          </div>
 
+          <div className="max-w-7xl relative z-30">
             <p
               ref={subcopyRef}
               className="font-mono text-black text-[12px] sm:text-[16px] uppercase tracking-[1.4px] mt-6 sm:mt-4 opacity-0 pointer-events-auto"
@@ -197,7 +219,7 @@ function TyreRangeSection() {
             </div>
 
             <div>
-              <h2 className="font-display text-black uppercase leading-[1.0] break-words" style={{ fontSize: "clamp(1.3rem, 10vw, 120px)" }}>
+              <h2 className="font-display text-black uppercase leading-[1.0] break-words" style={{ fontSize: "clamp(1.5rem, 10vw, 120px)" }}>
                 {range.name}
               </h2>
               <p className="font-mono text-[#999999] text-[12px] sm:text-[13px] uppercase tracking-[1.4px] mt-4 sm:mt-6 max-w-lg">
