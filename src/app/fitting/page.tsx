@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { ShieldCheck, MapPin, Wrench, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
