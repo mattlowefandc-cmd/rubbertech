@@ -104,7 +104,7 @@ function HeroSection() {
         </div>
 
         {/* Foreground Content: Decoupled for Mobile Optimization */}
-        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-between py-24 sm:justify-end sm:pb-32 pointer-events-none">
+        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-between py-20 sm:justify-end sm:pb-32 pointer-events-none">
           
           {/* Top Section (Mobile Only Headlines) */}
           <div className="relative z-20 sm:hidden">
@@ -213,7 +213,7 @@ function TyreRangeSection() {
           {/* Subtle hover reveal for background */}
           <div className="absolute inset-0 bg-white group-hover:bg-[#f5f5f5] transition-colors duration-700" />
 
-          <div className="relative z-10 w-full h-full max-w-[1720px] mx-auto px-6 flex flex-col justify-between py-16">
+          <div className="relative z-10 w-full h-full max-w-[1720px] mx-auto px-6 flex flex-col justify-center sm:justify-between py-12 sm:py-16 gap-8 sm:gap-0">
             <div className="font-mono text-[14px] text-black uppercase tracking-[1.4px] opacity-70">
               {String(idx + 1).padStart(2, "0")} — {range.label}
             </div>
@@ -244,7 +244,7 @@ function ProductSpotlight() {
     <section
       ref={sectionRef}
       id="product-spotlight"
-      className="relative bg-white py-32 lg:py-48 border-b border-[#999999]/30"
+      className="relative bg-white py-24 lg:py-48 border-b border-[#999999]/30"
       aria-labelledby="spotlight-heading"
     >
       <div className="max-w-[1720px] mx-auto px-6">
@@ -387,7 +387,7 @@ function ExpertiseSection() {
   ];
 
   return (
-    <section className="bg-white py-40 border-b border-[#999999]/30">
+    <section className="bg-white py-24 sm:py-40 border-b border-[#999999]/30">
       <div className="max-w-[1720px] mx-auto px-6">
         <h2 className="font-display text-black uppercase leading-[1.0] mb-24" style={{ fontSize: "clamp(1.8rem, 4vw, 56px)" }}>
           THE NANKANG SPECIALISTS
