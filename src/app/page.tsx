@@ -264,14 +264,37 @@ function ProductSpotlight() {
               {featured.description.slice(0, 260)}...
             </p>
 
-            <ul className="space-y-4 mb-16">
-              {featured.features.slice(0, 3).map((f) => (
-                <li key={f} className="flex items-start gap-4">
-                  <div className="w-[1px] h-[16px] bg-[#999999] mt-1" />
-                  <span className="font-mono text-[14px] text-black uppercase tracking-[1.2px] leading-tight flex-1">{f}</span>
-                </li>
-              ))}
-            </ul>
+            {/* High-End Technical Marquee */}
+            <div className="relative w-full overflow-hidden mb-16 py-4 border-y border-[#999999]/20 group">
+              <div className="flex whitespace-nowrap animate-marquee">
+                {[...featured.features, ...featured.features].map((f, i) => (
+                  <div key={i} className="flex items-center px-8">
+                    <div className="w-[1.5px] h-[12px] bg-black mr-6" />
+                    <span className="font-mono text-[13px] text-black uppercase tracking-[1.4px]">
+                      {f}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              {/* Edge Fades for Premium look */}
+              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            </div>
+
+            <style jsx>{`
+              @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-marquee {
+                display: flex;
+                animation: marquee 40s linear infinite;
+                width: max-content;
+              }
+              .animate-marquee:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
 
             <Link
               href={`/tyres/${featured.category}/${featured.slug}`}
