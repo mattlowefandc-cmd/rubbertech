@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { ShieldCheck, MapPin, Tool, Clock } from "lucide-react";
+import { ShieldCheck, MapPin, Wrench, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "FITTING ARCHIVE | RUBBER TECH",
@@ -34,7 +34,7 @@ export default function FittingPage() {
         <div className="grid lg:grid-cols-4 gap-8 mb-40">
           {[
             { icon: ShieldCheck, title: "TOUCHLESS TECH", desc: "No metal-on-metal contact. Our partners use nylon-head mounting equipment to preserve individual rim finishes." },
-            { icon: Tool, title: "HUNTER ALIGNMENT", desc: "Precision balancing using Hunter Road Force technology to eliminate high-speed harmonic vibration." },
+            { icon: Wrench, title: "HUNTER ALIGNMENT", desc: "Precision balancing using Hunter Road Force technology to eliminate high-speed harmonic vibration." },
             { icon: MapPin, title: "UK WIDE REACH", desc: "A curated network of 50+ authorised fitting centres covering every major UK metropolitan hub." },
             { icon: Clock, title: "EXPRESS SLOTS", desc: "Priority booking slots for Rubber Tech customers, with most fittings completed within 45 minutes." },
           ].map((p, i) => (
