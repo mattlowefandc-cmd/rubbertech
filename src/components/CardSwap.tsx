@@ -197,9 +197,9 @@ const CardSwap = ({
           key: i,
           // @ts-ignore - cloning refs is tricky with forwardRef but functional here
           ref: refs[i],
-          style: { width: typeof width === 'number' ? `${width}px` : width, height: typeof height === 'number' ? `${height}px` : height, ...(child.props.style ?? {}) },
+          style: { width: typeof width === 'number' ? `${width}px` : width, height: typeof height === 'number' ? `${height}px` : height, ...((child as any).props.style ?? {}) },
           onClick: (e: React.MouseEvent) => {
-            child.props.onClick?.(e);
+            (child as any).props.onClick?.(e);
             onCardClick?.(i);
           }
         } as any)
