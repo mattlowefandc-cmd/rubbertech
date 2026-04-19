@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useCart } from "@/context/CartContext";
-import { ShoppingBag, ChevronRight, Lock, CheckCircle, ArrowLeft } from "lucide-react";
+import { ShoppingBag, ChevronRight, Lock, CheckCircle, ArrowLeft, Zap } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
