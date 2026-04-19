@@ -37,37 +37,8 @@ const FRAME_PATTERN = (i: number) => `/sequences/tyre/frame_${String(i).padStart
 
 // Mobile: load every Nth frame to reduce memory
 const MOBILE_FRAME_SKIP = 3;
-const MAX_DETECT_FRAMES = 200; // upper bound for auto-detection
 
-async function detectFrameCount(pattern: (i: number) => string): Promise<number> {
-  let count = 0;
-  for (let i = 1; i <= MAX_DETECT_FRAMES; i++) {
-    try {
-      const res = await fetch(pattern(i), { method: "HEAD" });
-      if (!res.ok) break;
-      count = i;
-    } catch {
-      break;
-    }
-  }
-  return count;
-}
 
-async function detectPattern(): Promise<{ pattern: (i: number) => string; count: number } | null> {
-  for (const pattern of FRAME_PATTERNS) {
-    // Test frame 1 exists
-    try {
-      const res = await fetch(pattern(1), { method: "HEAD" });
-      if (res.ok) {
-        const count = await detectFrameCount(pattern);
-        if (count > 0) return { pattern, count };
-      }
-    } catch {
-      continue;
-    }
-  }
-  return null;
-}
 
 const TyreSequence = forwardRef<TyreSequenceHandle, TyreSequenceProps>(
   (
