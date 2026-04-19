@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { ShoppingBag } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { label: "CAR TYRES", href: "/tyres/car" },
@@ -19,6 +21,7 @@ export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { itemCount, setIsCartOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -63,14 +66,29 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Right Nav (STORE/SEARCH) */}
-            <div className="flex-1 flex justify-end">
+            {/* Right Nav (SEARCH/BAG) */}
+            <div className="flex-1 flex justify-end items-center gap-6 sm:gap-10">
               <Link
                 href="/tyre-finder"
-                className="font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity"
+                className="hidden sm:block font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity"
               >
                 SEARCH
               </Link>
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative flex items-center gap-3 font-mono text-[14px] leading-none uppercase tracking-[1.4px] text-black hover:opacity-75 transition-opacity group"
+                aria-label="OPEN SHOPPING BAG"
+              >
+                <span className="hidden sm:block">BAG</span>
+                <div className="relative">
+                  <ShoppingBag size={20} strokeWidth={1.5} />
+                  {itemCount > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-black text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-in zoom-in duration-300">
+                      {itemCount}
+                    </span>
+                  )}
+                </div>
+              </button>
             </div>
 
           </div>

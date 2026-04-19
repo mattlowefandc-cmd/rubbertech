@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProductBySlug } from "@/data/products";
 import TyreSequence from "@/components/TyreSequence";
+import ProductActions from "@/components/ProductActions";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -72,9 +73,7 @@ export default async function ProductPage({ params }: Props) {
                </div>
 
                <div className="mt-20">
-                  <Link href="/contact" className="inline-flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-white bg-black border border-black rounded-full px-16 py-6 hover:bg-white hover:text-black transition-colors duration-500 shadow-2xl">
-                    ORDER THIS SPECIFICATION
-                  </Link>
+                  <ProductActions product={product} />
                </div>
             </div>
           </div>

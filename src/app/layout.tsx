@@ -122,6 +122,8 @@ import Footer from "@/components/Footer";
 import WhatsAppBubble from "@/components/WhatsAppBubble";
 import CookieBanner from "@/components/CookieBanner";
 import MobileStickyBar from "@/components/MobileStickyBar";
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 
 export default function RootLayout({
   children,
@@ -144,16 +146,19 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-white text-black antialiased overflow-x-hidden flex flex-col min-h-screen selection:bg-black selection:text-white">
-        <Header />
-        
-        <div className="flex-grow">
-          {children}
-        </div>
-        
-        <Footer />
-        <MobileStickyBar />
-        <WhatsAppBubble />
-        <CookieBanner />
+        <CartProvider>
+          <Header />
+          <CartDrawer />
+          
+          <div className="flex-grow">
+            {children}
+          </div>
+          
+          <Footer />
+          <MobileStickyBar />
+          <WhatsAppBubble />
+          <CookieBanner />
+        </CartProvider>
 
         {/* Google Analytics 4 — consent-gated */}
         <Script
