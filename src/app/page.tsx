@@ -193,8 +193,18 @@ function HeroSection() {
 // =============================================================================
 // SCENE 2 — THE RANGES (White Theme)
 // =============================================================================
+import CardSwap, { Card } from "@/components/CardSwap";
+
 function TyreRangeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const ranges = [
     { name: "MOTORSPORT", desc: "NS-2R, AR-1, CR-S. ROAD-LEGAL RACE PERFORMANCE.", label: "COMPETITION", href: "/tyres/motorsport" },
@@ -203,32 +213,77 @@ function TyreRangeSection() {
   ];
 
   return (
-    <section ref={sectionRef} id="tyre-ranges" className="bg-white w-full border-t border-[#999999]/30" aria-label="Tyre ranges">
-      {ranges.map((range, idx) => (
-        <Link
-          key={range.name}
-          href={range.href}
-          className="relative group block w-full h-auto py-24 sm:h-[60vh] sm:min-h-[500px] border-b border-[#999999]/30 overflow-hidden"
-        >
-          {/* Subtle hover reveal for background */}
-          <div className="absolute inset-0 bg-white group-hover:bg-[#f5f5f5] transition-colors duration-700" />
+    <section ref={sectionRef} id="tyre-ranges" className="bg-white w-full border-t border-[#999999]/30 overflow-hidden" aria-label="Tyre ranges">
+      {isMobile ? (
+        <div className="py-24 flex flex-col items-center justify-center min-h-[700px] sm:min-h-[800px]">
+          <h2 className="font-mono text-[#999999] text-[12px] uppercase tracking-[2px] mb-20 text-center">
+            TAP TO EXPLORE CATEGORIES
+          </h2>
+          
+          <div className="relative w-full flex items-center justify-center translate-x-[-30px] translate-y-[-20px]">
+            <CardSwap
+              width={320}
+              height={450}
+              cardDistance={40}
+              verticalDistance={50}
+              delay={4000}
+              pauseOnHover={true}
+              skewAmount={4}
+            >
+              {ranges.map((range, idx) => (
+                <Card key={range.name} className="flex flex-col justify-between p-10 bg-white border border-black/5 rounded-[32px] shadow-2xl">
+                   <div className="flex justify-between items-start">
+                     <span className="font-mono text-black text-[12px] tracking-[1.4px]">0{idx + 1}</span>
+                     <span className="font-mono text-[#999999] text-[10px] tracking-[1.4px] uppercase">{range.label}</span>
+                   </div>
+                   
+                   <div className="mt-8">
+                     <h3 className="font-display text-black text-[32px] leading-tight uppercase mb-4 break-words">
+                       {range.name}
+                     </h3>
+                     <p className="font-mono text-[#999999] text-[12px] leading-relaxed uppercase tracking-[1px]">
+                       {range.desc}
+                     </p>
+                   </div>
 
-          <div className="relative z-10 w-full h-full max-w-[1720px] mx-auto px-6 flex flex-col justify-between py-16">
-            <div className="font-mono text-[14px] text-black uppercase tracking-[1.4px] opacity-70">
-              {String(idx + 1).padStart(2, "0")} — {range.label}
-            </div>
-
-            <div>
-              <h2 className="font-display text-black uppercase leading-[1.0] break-words" style={{ fontSize: "clamp(1.3rem, 6vw, 90px)" }}>
-                {range.name}
-              </h2>
-              <p className="font-mono text-[#999999] text-[12px] sm:text-[13px] uppercase tracking-[1.4px] mt-4 sm:mt-6 max-w-lg">
-                {range.desc}
-              </p>
-            </div>
+                   <Link 
+                     href={range.href}
+                     className="mt-auto w-full py-5 border border-black rounded-full flex items-center justify-center font-mono text-[11px] tracking-[1.4px] uppercase hover:bg-black hover:text-white transition-colors duration-300"
+                   >
+                     EXPLORE RANGE
+                   </Link>
+                </Card>
+              ))}
+            </CardSwap>
           </div>
-        </Link>
-      ))}
+        </div>
+      ) : (
+        ranges.map((range, idx) => (
+          <Link
+            key={range.name}
+            href={range.href}
+            className="relative group block w-full h-auto py-24 sm:h-[60vh] sm:min-h-[500px] border-b border-[#999999]/30 overflow-hidden"
+          >
+            {/* Subtle hover reveal for background */}
+            <div className="absolute inset-0 bg-white group-hover:bg-[#f5f5f5] transition-colors duration-700" />
+
+            <div className="relative z-10 w-full h-full max-w-[1720px] mx-auto px-6 flex flex-col justify-between py-16">
+              <div className="font-mono text-[14px] text-black uppercase tracking-[1.4px] opacity-70">
+                {String(idx + 1).padStart(2, "0")} — {range.label}
+              </div>
+
+              <div>
+                <h2 className="font-display text-black uppercase leading-[1.0] break-words" style={{ fontSize: "clamp(1.3rem, 6vw, 90px)" }}>
+                  {range.name}
+                </h2>
+                <p className="font-mono text-[#999999] text-[12px] sm:text-[13px] uppercase tracking-[1.4px] mt-4 sm:mt-6 max-w-lg">
+                  {range.desc}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))
+      )}
     </section>
   );
 }
