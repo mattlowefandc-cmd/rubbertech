@@ -108,18 +108,18 @@ function HeroSection() {
           
           {/* Top Section (Mobile Only Headlines) */}
           <div className="relative z-20 sm:hidden">
-            <div className="relative h-32">
+            <div className="relative h-24">
               <h1
                 ref={headline1Ref}
                 className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto break-words"
-                style={{ fontSize: "clamp(1.8rem, 12vw, 220px)" }}
+                style={{ fontSize: "clamp(1.5rem, 10vw, 220px)" }}
               >
                 PRECISION<br />RUBBER
               </h1>
               <h2
                 ref={headline2Ref}
                 className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto break-words"
-                style={{ fontSize: "clamp(1.6rem, 10vw, 150px)" }}
+                style={{ fontSize: "clamp(1.4rem, 8vw, 150px)" }}
               >
                 ENGINEERED FOR<br />PERFORMANCE
               </h2>
@@ -219,7 +219,7 @@ function TyreRangeSection() {
             </div>
 
             <div>
-              <h2 className="font-display text-black uppercase leading-[1.0] break-words" style={{ fontSize: "clamp(1.5rem, 10vw, 120px)" }}>
+              <h2 className="font-display text-black uppercase leading-[1.0] break-words" style={{ fontSize: "clamp(1.3rem, 8vw, 120px)" }}>
                 {range.name}
               </h2>
               <p className="font-mono text-[#999999] text-[12px] sm:text-[13px] uppercase tracking-[1.4px] mt-4 sm:mt-6 max-w-lg">
@@ -255,7 +255,7 @@ function ProductSpotlight() {
               FEATURED ENGINEERING
             </h2>
             <h3 id="spotlight-heading" className="font-display font-normal text-black uppercase leading-[1.0] mb-8"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 84px)" }}
+              style={{ fontSize: "clamp(1.8rem, 6vw, 84px)" }}
             >
               {featured.name}
             </h3>
@@ -310,7 +310,7 @@ function TyreFinderCTA() {
       <div className="max-w-[1720px] mx-auto px-6 text-center flex flex-col items-center">
         
         <h2 className="font-display font-normal text-black uppercase leading-[1.0] mb-6"
-            style={{ fontSize: "clamp(3rem, 8vw, 110px)" }}>
+            style={{ fontSize: "clamp(2rem, 8vw, 110px)" }}>
           FIND EXACT FITMENT
         </h2>
         <p className="font-mono text-[#999999] text-[14px] uppercase tracking-[1.4px] mb-16">
@@ -366,7 +366,7 @@ function ExpertiseSection() {
   return (
     <section className="bg-white py-40 border-b border-[#999999]/30">
       <div className="max-w-[1720px] mx-auto px-6">
-        <h2 className="font-display text-black uppercase leading-[1.0] mb-24" style={{ fontSize: "clamp(2.5rem, 5vw, 72px)" }}>
+        <h2 className="font-display text-black uppercase leading-[1.0] mb-24" style={{ fontSize: "clamp(1.8rem, 5vw, 72px)" }}>
           THE NANKANG SPECIALISTS
         </h2>
         <div className="grid lg:grid-cols-3 gap-x-16 gap-y-16">
