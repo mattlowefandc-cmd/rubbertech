@@ -5,11 +5,12 @@ import { getProductBySlug } from "@/data/products";
 import TyreSequence from "@/components/TyreSequence";
 
 interface Props {
-  params: { category: string; slug: string };
+  params: Promise<{ category: string; slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
   if (!product) return { title: "Product Not Found" };
   return {
     title: `${product.name.toUpperCase()} | RUBBER TECH`,
@@ -17,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProductPage({ params }: Props) {
-  const product = getProductBySlug(params.slug);
-
-  if (!product || product.category !== params.category) {
+export default async function ProductPage({ params }: Props) {
+  const { category, slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product || product.category !== category) {
     notFound();
   }
 

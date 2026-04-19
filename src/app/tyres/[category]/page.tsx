@@ -3,8 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductsByCategory, TyreCategory } from "@/data/products";
 
-export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
-  const categoryStr = params.category.toUpperCase().replace("-", " ");
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const { category } = await params;
+  const categoryStr = category.toUpperCase().replace("-", " ");
   return {
     title: `${categoryStr} TYRES | RUBBER TECH`,
     description: `Shop our range of Nankang ${categoryStr} tyres. Official UK supplier.`,
@@ -39,16 +40,17 @@ const CATEGORY_DNA: Record<string, { title: string; techHeader: string; body: st
   }
 };
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const { category } = await params;
   const validCategories = ["car", "motorsport", "4x4", "suv", "ev", "commercial", "winter", "all-season", "motorcycle", "retro", "runflat"];
-  if (!validCategories.includes(params.category)) {
+  if (!validCategories.includes(category)) {
     notFound();
   }
 
-  const catKey = params.category as TyreCategory;
+  const catKey = category as TyreCategory;
   const products = getProductsByCategory(catKey);
-  const categoryTitle = params.category.toUpperCase().replace("-", " ");
-  const dna = CATEGORY_DNA[params.category] || CATEGORY_DNA["car"];
+  const categoryTitle = category.toUpperCase().replace("-", " ");
+  const dna = CATEGORY_DNA[category] || CATEGORY_DNA["car"];
 
   return (
     <main className="bg-white min-h-screen pt-40 pb-32">
