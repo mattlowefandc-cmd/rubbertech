@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Search, Loader2, CheckCircle, ArrowRight } from "lucide-react";
 
 export default function TyreFinder() {
   const [activeTab, setActiveTab] = useState<"reg" | "size">("reg");
@@ -19,10 +20,11 @@ export default function TyreFinder() {
     e.preventDefault();
     if (!regInput) return;
     setIsSearching(true);
+    // Simulate DVLA lookup
     setTimeout(() => {
       setVehicleFound(true);
       setIsSearching(false);
-    }, 1200);
+    }, 1800);
   };
 
   const handleSizeSearch = (e: React.FormEvent) => {
@@ -32,198 +34,140 @@ export default function TyreFinder() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto border border-black/10 bg-white overflow-hidden shadow-2xl">
-      {/* Tabs */}
-      <div className="flex border-b border-[#999999]/30">
+    <div className="w-full max-w-5xl mx-auto border border-black/10 bg-white overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)]">
+      {/* Tab Switcher */}
+      <div className="flex border-b border-black/10">
         <button
-          onClick={() => setActiveTab("reg")}
-          className={`flex-1 py-5 text-[14px] font-mono uppercase tracking-[1.4px] transition-colors ${
-            activeTab === "reg"
-              ? "bg-black text-white"
-              : "bg-transparent text-[#999999] hover:text-black"
+          onClick={() => { setActiveTab("reg"); setVehicleFound(false); }}
+          className={`flex-1 py-6 text-[11px] font-mono uppercase tracking-[2px] transition-all relative ${
+            activeTab === "reg" ? "text-black" : "text-[#999999] hover:text-black"
           }`}
-          aria-selected={activeTab === "reg"}
-          role="tab"
         >
-          SEARCH BY REG
+          FITMENT BY REGISTRATION
+          {activeTab === "reg" && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-black" />}
         </button>
         <button
           onClick={() => setActiveTab("size")}
-          className={`flex-1 py-5 text-[14px] font-mono uppercase tracking-[1.4px] transition-colors ${
-            activeTab === "size"
-              ? "bg-black text-white"
-              : "bg-transparent text-[#999999] hover:text-black"
+          className={`flex-1 py-6 text-[11px] font-mono uppercase tracking-[2px] transition-all relative ${
+            activeTab === "size" ? "text-black" : "text-[#999999] hover:text-black"
           }`}
-          aria-selected={activeTab === "size"}
-          role="tab"
         >
-          SEARCH BY SIZE
+          FITMENT BY DIMENSIONS
+          {activeTab === "size" && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-black" />}
         </button>
       </div>
 
-      <div className="p-8 sm:p-16">
-        {/* Reg Search Panel */}
+      <div className="p-10 sm:p-20">
+        {/* Registration Panel */}
         {activeTab === "reg" && (
-          <div role="tabpanel" className="animate-fade-in-down">
+          <div className="animate-in fade-in duration-700">
             {!vehicleFound ? (
-              <form onSubmit={handleRegSearch} className="max-w-xl mx-auto text-center">
-                <p className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] mb-8">
-                  ENTER REGISTRATION FOR EXACT SPECIFICATION
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                  <div className="flex-1 relative">
+              <form onSubmit={handleRegSearch} className="max-w-xl mx-auto">
+                <div className="text-center mb-12">
+                   <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">ARCHIVE_LOOKUP // DVLA_DIRECT</div>
+                   <h3 className="font-display text-black text-[32px] uppercase leading-none">IDENTIFY VEHICLE</h3>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex-1 relative group">
+                    <div className="absolute left-6 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-black transition-colors">
+                       <Search size={18} />
+                    </div>
                     <input
                       type="text"
                       value={regInput}
                       onChange={(e) => setRegInput(e.target.value.toUpperCase().slice(0, 8))}
-                      placeholder="REGISTRATION"
-                      className="w-full px-6 py-4 bg-transparent border border-black/20 focus:border-black text-black font-mono text-[18px] tracking-[2px] transition-all outline-none text-center uppercase placeholder:text-[#999999] rounded-none"
+                      placeholder="ENTER REG"
+                      className="w-full pl-14 pr-6 py-5 bg-[#fcfcfc] border border-black/10 focus:border-black text-black font-mono text-[20px] tracking-[4px] transition-all outline-none rounded-none uppercase placeholder:text-[#cccccc]"
                       required
+                      autoFocus
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={isSearching}
-                    className="flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-white bg-black border border-black px-8 py-4 hover:bg-transparent hover:text-black disabled:bg-[#f5f5f5] disabled:text-[#999999] disabled:border-[#e5e5e5] transition-colors duration-300 whitespace-nowrap rounded-none flex-shrink-0"
+                    className="flex items-center justify-center font-mono text-[12px] uppercase tracking-[2px] text-white bg-black border border-black px-10 py-5 hover:bg-white hover:text-black disabled:bg-[#f5f5f5] disabled:text-[#999999] disabled:border-black/5 transition-all flex-shrink-0"
                   >
-                    {isSearching ? "LOCATING..." : "SEARCH"}
+                    {isSearching ? <Loader2 className="animate-spin" size={18} /> : "VALIDATE"}
                   </button>
                 </div>
+                <p className="mt-8 font-mono text-[10px] text-[#999999] text-center uppercase tracking-[1px]">UK SPECIFICATION VEHICLES ONLY // DATA ENCRYPTED</p>
               </form>
             ) : (
-              <div className="border border-black/10 p-8">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
-                  <div className="flex items-center gap-6">
-                    <div className="font-mono text-[24px] tracking-[2px] text-black px-4 py-2 border border-black/20">
-                      {regInput}
-                    </div>
-                    <div>
-                      <h3 className="font-display text-black text-[28px] uppercase leading-none mb-2">BMW 320D M SPORT</h3>
-                      <p className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px]">2019 • F30 FACELIFT • 18&quot; WHEELS</p>
-                    </div>
+              <div className="animate-in slide-in-from-bottom-4 duration-700">
+                <div className="flex flex-col lg:flex-row gap-12 items-center mb-16 px-6">
+                  <div className="flex-1">
+                     <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4 flex items-center gap-2">
+                        <CheckCircle size={12} className="text-black" /> VEHICLE_VERIFIED_SUCCESS
+                     </div>
+                     <h3 className="font-display text-black text-[56px] uppercase leading-[0.9] mb-4">MERCEDES-BENZ <br/> E-CLASS (W213)</h3>
+                     <p className="font-mono text-[#999999] text-[12px] uppercase tracking-[2.5px]">2022 // E220D AMG LINE // 19&quot; WHEEL PACK</p>
                   </div>
-                  <button onClick={() => setVehicleFound(false)} className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] hover:text-black underline underline-offset-4">RESET VEHICLE</button>
-                </div>
-                
-                <h4 className="font-mono text-black text-[14px] uppercase tracking-[1.4px] mb-6">
-                  ORIGINAL EQUIPMENT SIZES IDENTIFIED
-                </h4>
-                
-                <div className="grid sm:grid-cols-2 gap-4 border-b border-black/10 pb-8 mb-8">
-                  <div className="border border-black/10 p-6 flex flex-col justify-center items-center">
-                    <div className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] mb-2">FRONT AXLE</div>
-                    <div className="font-display text-black text-[32px] tracking-wide">225/45 R18 91Y</div>
-                  </div>
-                  <div className="border border-black/10 p-6 flex flex-col justify-center items-center">
-                    <div className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] mb-2">REAR AXLE</div>
-                    <div className="font-display text-black text-[32px] tracking-wide">255/40 R18 95Y</div>
+                  <div className="flex flex-col items-end gap-4">
+                     <div className="font-mono text-black text-[24px] tracking-[4px] border border-black/20 p-4 bg-[#fcfcfc]">
+                        {regInput}
+                     </div>
+                     <button onClick={() => setVehicleFound(false)} className="font-mono text-[#999999] text-[10px] uppercase tracking-[1px] hover:text-black border-b border-black/10">RESET SEARCH_QUERY</button>
                   </div>
                 </div>
-
-                <div className="text-center">
-                  <Link href="/tyres/car?size=225/45r18" className="inline-flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-white bg-black border border-black rounded-full px-8 py-4 hover:bg-transparent hover:text-black transition-colors duration-300">
-                    VIEW MATCHING NANKANG TYRES
-                  </Link>
+                
+                <div className="grid md:grid-cols-2 gap-8 border-t border-black/10 pt-16">
+                  <div className="bg-[#fcfcfc] border border-black/5 p-10 group hover:border-black transition-colors">
+                    <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">FRONT_AXLE // PRIMARY</div>
+                    <div className="font-display text-black text-[36px] mb-4">245/40 R19 98Y</div>
+                    <Link href="/tyres/car?size=245/40R19" className="font-mono text-black text-[12px] uppercase tracking-[1px] flex items-center gap-2 group-hover:gap-4 transition-all">
+                       MATCHING INVENTORY <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                  <div className="bg-[#fcfcfc] border border-black/5 p-10 group hover:border-black transition-colors">
+                    <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">REAR_AXLE // STAGGERED</div>
+                    <div className="font-display text-black text-[36px] mb-4">275/35 R19 100Y</div>
+                    <Link href="/tyres/car?size=275/35R19" className="font-mono text-black text-[12px] uppercase tracking-[1px] flex items-center gap-2 group-hover:gap-4 transition-all">
+                       MATCHING INVENTORY <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             )}
           </div>
         )}
 
-        {/* Size Search Panel */}
+        {/* Dimension Panel */}
         {activeTab === "size" && (
-          <form onSubmit={handleSizeSearch} role="tabpanel" className="animate-fade-in-down">
-            <p className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] mb-12 text-center max-w-xl mx-auto">
-              SELECT EXACT TYRE DIMENSIONS FROM SIDEWALL.
-            </p>
+          <form onSubmit={handleSizeSearch} className="animate-in fade-in duration-700">
+            <div className="text-center mb-16">
+               <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">DIMENSIONAL_ARRAY // MANUAL_ENTRY</div>
+               <h3 className="font-display text-black text-[32px] uppercase leading-none">SIDEWALL DATA</h3>
+            </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-              {/* Width */}
-              <div className="space-y-4">
-                <label className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] block">WIDTH</label>
-                <select 
-                  value={width} 
-                  onChange={(e) => setWidth(e.target.value)}
-                  className="w-full bg-white border border-black/20 focus:border-black text-black font-mono px-4 py-4 outline-none appearance-none cursor-pointer rounded-none"
-                  required
-                >
-                  <option value="">SELECT</option>
-                  <option value="195">195</option>
-                  <option value="205">205</option>
-                  <option value="215">215</option>
-                  <option value="225">225</option>
-                  <option value="235">235</option>
-                  <option value="245">245</option>
-                  <option value="255">255</option>
-                  <option value="265">265</option>
-                </select>
-              </div>
-              
-              {/* Profile */}
-              <div className="space-y-4">
-                <label className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] block">PROFILE</label>
-                <select 
-                  value={profile} 
-                  onChange={(e) => setProfile(e.target.value)}
-                  className="w-full bg-white border border-black/20 focus:border-black text-black font-mono px-4 py-4 outline-none appearance-none cursor-pointer rounded-none"
-                  required
-                >
-                  <option value="">SELECT</option>
-                  <option value="30">30</option>
-                  <option value="35">35</option>
-                  <option value="40">40</option>
-                  <option value="45">45</option>
-                  <option value="50">50</option>
-                  <option value="55">55</option>
-                  <option value="60">60</option>
-                  <option value="65">65</option>
-                </select>
-              </div>
-              
-              {/* Rim */}
-              <div className="space-y-4">
-                <label className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] block">RIM</label>
-                <select 
-                  value={rim} 
-                  onChange={(e) => setRim(e.target.value)}
-                  className="w-full bg-white border border-black/20 focus:border-black text-black font-mono px-4 py-4 outline-none appearance-none cursor-pointer rounded-none"
-                  required
-                >
-                  <option value="">SELECT</option>
-                  <option value="15">15&quot;</option>
-                  <option value="16">16&quot;</option>
-                  <option value="17">17&quot;</option>
-                  <option value="18">18&quot;</option>
-                  <option value="19">19&quot;</option>
-                  <option value="20">20&quot;</option>
-                  <option value="21">21&quot;</option>
-                  <option value="22">22&quot;</option>
-                </select>
-              </div>
-
-              {/* Speed Rating */}
-              <div className="space-y-4">
-                <label className="font-mono text-[#999999] text-[12px] uppercase tracking-[1.4px] block">SPEED</label>
-                <select 
-                  value={speed} 
-                  onChange={(e) => setSpeed(e.target.value)}
-                  className="w-full bg-white border border-black/20 focus:border-black text-black font-mono px-4 py-4 outline-none appearance-none cursor-pointer rounded-none"
-                >
-                  <option value="">ANY</option>
-                  <option value="H">H</option>
-                  <option value="V">V</option>
-                  <option value="W">W</option>
-                  <option value="Y">Y</option>
-                </select>
-              </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {[
+                { label: "WIDTH", val: width, set: setWidth, opts: ["195", "205", "215", "225", "235", "245", "255", "265", "275", "285"] },
+                { label: "PROFILE", val: profile, set: setProfile, opts: ["30", "35", "40", "45", "50", "55", "60", "65", "70", "75"] },
+                { label: "RIM", val: rim, set: setRim, opts: ["15", "16", "17", "18", "19", "20", "21", "22", "23"] },
+                { label: "SPEED", val: speed, set: setSpeed, opts: ["H", "V", "W", "Y", "(Y)", "ANY"] },
+              ].map((field) => (
+                <div key={field.label} className="space-y-4">
+                  <label className="font-mono text-black text-[10px] uppercase tracking-[2px] block border-b border-black/5 pb-2">{field.label}</label>
+                  <select 
+                    value={field.val} 
+                    onChange={(e) => field.set(e.target.value)}
+                    className="w-full bg-[#fcfcfc] border border-black/10 focus:border-black text-black font-mono text-[16px] px-4 py-4 outline-none appearance-none cursor-pointer rounded-none transition-colors"
+                    required
+                  >
+                    <option value="">SELECT</option>
+                    {field.opts.map(o => <option key={o} value={o}>{o}{field.label === "RIM" ? '"' : ""}</option>)}
+                  </select>
+                </div>
+              ))}
             </div>
 
             <div className="text-center">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center font-mono text-[14px] uppercase tracking-[1.4px] text-white bg-black border border-black rounded-full px-12 py-4 hover:bg-white hover:text-black transition-colors duration-300 shadow-xl"
+                className="inline-flex items-center justify-center font-mono text-[12px] uppercase tracking-[2px] text-white bg-black border border-black rounded-full px-16 py-6 hover:bg-transparent hover:text-black transition-all shadow-xl"
               >
-                FIND INVENTORY
+                IDENTIFY INVENTORY
               </button>
             </div>
           </form>
@@ -232,5 +176,3 @@ export default function TyreFinder() {
     </div>
   );
 }
-
-// FILE COMPLETE ✓

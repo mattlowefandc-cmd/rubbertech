@@ -10,6 +10,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/product/:path*",
+        destination: "/tyres/:category?/:path*", // Best effort alias
+        permanent: true,
+      },
+      {
+        source: "/products/:path*",
+        destination: "/tyres/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
