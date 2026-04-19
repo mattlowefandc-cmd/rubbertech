@@ -244,10 +244,10 @@ const TyreSequence = forwardRef<TyreSequenceHandle, TyreSequenceProps>(
     const showCanvas = loadProgress >= 80 || isReady;
 
     return (
-      <div className={`relative ${className}`} style={{ width, height: "auto", aspectRatio: `${width}/${height}` }}>
+      <div className={`relative ${className} w-full h-full flex items-center justify-center`}>
         {/* Loading bar */}
         {!isReady && hasSequence && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-white">
             <div className="w-4/5 max-w-xs">
               <div className="flex justify-between text-xs text-black/50 mb-2 font-mono">
                 <span>Loading Tyre</span>

@@ -92,14 +92,14 @@ function HeroSection() {
       <div ref={pinRef} className="h-screen w-full relative flex items-center justify-center overflow-hidden bg-white">
         
         {/* Transparent Tyre Sequence centered */}
-        <div className="absolute inset-0 flex items-center justify-center scale-[0.7] sm:scale-[0.9] md:scale-[1.1] lg:scale-[1.3] translate-y-6 sm:translate-y-10 md:translate-y-16 lg:translate-y-24 z-0 bg-white">
+        <div className="absolute inset-0 z-0 bg-white">
           <TyreSequence
             ref={tyreRef}
             mode="scrub" // Fully controlled by GSAP
             scrollProgress={0} 
-            width={1000}
-            height={1000}
-            className="pointer-events-none"
+            width={2000}
+            height={1200}
+            className="w-full h-full"
           />
         </div>
 
