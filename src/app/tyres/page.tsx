@@ -121,14 +121,26 @@ export default async function AllTyresPage({
                       href={`/tyres/${product.category}/${product.slug}`}
                       className="group flex flex-col h-full bg-white relative cursor-pointer"
                     >
-                      <div className="relative aspect-square w-full bg-[#fcfcfc] border border-black/10 flex items-center justify-center overflow-hidden transition-colors group-hover:bg-[#f5f5f5]">
+                      <div className="relative aspect-square w-full bg-[#fcfcfc] border border-black/10 overflow-hidden transition-colors group-hover:bg-[#f5f5f5]">
                         {product.badge && (
-                          <span className="absolute top-6 left-6 font-mono text-black text-[11px] uppercase tracking-[1.4px] z-10 border-b border-black/40 pb-1">
+                          <span className="absolute top-6 left-6 font-mono text-black text-[11px] uppercase tracking-[1.4px] z-20 border-b border-black/40 pb-1">
                             {product.badge}
                           </span>
                         )}
                         <div className="absolute inset-0 bg-[radial-gradient(#000_1px,transparent_0)] [background-size:20px_20px] opacity-[0.03]" />
-                        <span className="font-display text-black/5 text-[90px] uppercase font-bold tracking-tighter absolute rotate-90 whitespace-nowrap">{product.name}</span>
+                        
+                        {/* Tyre Asset Wrapper */}
+                        <div className="absolute inset-0 z-10 p-10">
+                          <img 
+                            src={product.image} 
+                            alt={product.name} 
+                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
+                          />
+                        </div>
+
+                        <div className="absolute inset-0 flex items-center justify-center z-0">
+                          <span className="font-display text-black/5 text-[90px] uppercase font-bold tracking-tighter rotate-90 whitespace-nowrap">{product.name}</span>
+                        </div>
                       </div>
 
                       <div className="pt-8 flex flex-col justify-between flex-grow">
