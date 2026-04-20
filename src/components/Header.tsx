@@ -62,7 +62,17 @@ export default function Header() {
 
             {/* Center Logo */}
             <div className="flex-shrink-0 text-center">
-              <Link href="/" className="inline-flex items-center justify-center min-h-[48px] px-4 sm:px-6 cursor-pointer" aria-label="Rubber Tech Home">
+              <Link 
+                href="/" 
+                onClick={(e) => {
+                  if (typeof window !== "undefined" && window.location.pathname === "/") {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
+                className="inline-flex items-center justify-center min-h-[48px] px-4 sm:px-6 cursor-pointer" 
+                aria-label="Rubber Tech Home"
+              >
                 <span className="font-display text-black text-[20px] sm:text-[29px] leading-none uppercase tracking-widest block">
                   RUBBER TECH
                 </span>
