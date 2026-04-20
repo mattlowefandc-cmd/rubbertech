@@ -43,58 +43,58 @@ export default async function ProductPage({ params }: Props) {
         </nav>
 
         {/* Product Hero Grid */}
-        <div className="grid lg:grid-cols-2 gap-20 items-start mb-40">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-24 lg:mb-40">
           
           {/* Left: Monumental Typography & Lead Copy */}
-          <div className="lg:sticky lg:top-40">
-            <div className="font-mono text-[#999999] text-[14px] uppercase tracking-[2px] mb-8">
+          <div className="lg:sticky lg:top-40 w-full">
+            <div className="font-mono text-[#999999] text-[12px] lg:text-[14px] uppercase tracking-[2px] mb-6 lg:mb-8">
               {product.subcategory || product.category} // {product.badge}
             </div>
-            <h1 className="font-display font-normal text-black uppercase leading-[0.9] mb-12" style={{ fontSize: "clamp(4rem, 12vw, 200px)" }}>
+            <h1 className="font-display font-normal text-black uppercase leading-[0.9] mb-8 lg:mb-12" style={{ fontSize: "clamp(3rem, 12vw, 200px)" }}>
               {product.name}
             </h1>
             <div className="max-w-xl">
-               <p className="font-display text-black text-[28px] uppercase leading-tight mb-8">
+               <p className="font-display text-black text-[22px] lg:text-[28px] uppercase leading-tight mb-6 lg:mb-8">
                  {product.tagline}
                </p>
-               <p className="font-body text-[#999999] text-[18px] leading-[1.8] mb-12">
+               <p className="font-body text-[#999999] text-[15px] lg:text-[18px] leading-[1.8] mb-8 lg:mb-12">
                  {product.description}
                </p>
                
-               <div className="grid grid-cols-2 gap-12 border-t border-black/10 pt-12">
+               <div className="grid grid-cols-2 gap-6 lg:gap-12 border-t border-black/10 pt-8 lg:pt-12">
                   <div>
-                    <div className="font-mono text-black text-[12px] uppercase mb-4 tracking-[1.4px]">INTENDED USAGE</div>
-                    <div className="font-display text-black text-[32px] uppercase">{product.usageSplit}</div>
+                    <div className="font-mono text-black text-[10px] lg:text-[12px] uppercase mb-4 tracking-[1.4px]">INTENDED USAGE</div>
+                    <div className="font-display text-black text-[24px] lg:text-[32px] uppercase">{product.usageSplit}</div>
                   </div>
                   <div>
-                    <div className="font-mono text-black text-[12px] uppercase mb-4 tracking-[1.4px]">STARTING FROM</div>
-                    <div className="font-display text-black text-[32px] uppercase">£{product.priceFrom}</div>
+                    <div className="font-mono text-black text-[10px] lg:text-[12px] uppercase mb-4 tracking-[1.4px]">STARTING FROM</div>
+                    <div className="font-display text-black text-[24px] lg:text-[32px] uppercase">£{product.priceFrom}</div>
                   </div>
                </div>
 
-               <div className="mt-20">
+               <div className="mt-12 lg:mt-20">
                   <ProductActions product={product} />
                </div>
             </div>
           </div>
 
           {/* Right: Immersive Asset Container */}
-          <div className="w-full aspect-square bg-[#fcfcfc] border border-black/10 flex items-center justify-center relative overflow-hidden group">
+          <div className="w-full aspect-square lg:aspect-auto lg:h-[800px] bg-[#fcfcfc] border border-black/10 flex items-center justify-center relative overflow-hidden group">
              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" 
                   style={{ backgroundImage: "linear-gradient(#000 1px, transparent 0), linear-gradient(90deg, #000 1px, transparent 0)", backgroundSize: "10% 10%", opacity: 0.03 }} />
              
-             <div className="relative z-10 w-full h-full p-12">
+             <div className="relative z-10 w-full h-full p-4 lg:p-12">
                <img 
                  src={product.image} 
                  alt={product.name} 
-                 className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-700" 
+                 className="w-full h-full object-contain scale-[1.2] lg:scale-110 group-hover:scale-125 transition-transform duration-700" 
                />
              </div>
              
              {/* Technical Corner Marking */}
-             <div className="absolute top-8 right-8 text-right">
-                <div className="font-mono text-black text-[12px] uppercase tracking-[2px]">{product.id}</div>
-                <div className="font-mono text-[#999999] text-[10px] uppercase">VERIFIED BATCH</div>
+             <div className="absolute top-4 right-4 lg:top-8 lg:right-8 text-right">
+                <div className="font-mono text-black text-[10px] lg:text-[12px] uppercase tracking-[2px]">{product.id}</div>
+                <div className="font-mono text-[#999999] text-[9px] lg:text-[10px] uppercase">VERIFIED BATCH</div>
              </div>
           </div>
 
