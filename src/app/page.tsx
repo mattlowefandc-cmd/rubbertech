@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TyreSequence, { type TyreSequenceHandle } from "@/components/TyreSequence";
 import { featuredProducts } from "@/data/products";
 
+import { motion } from "framer-motion";
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -414,21 +416,77 @@ function ExpertiseSection() {
 // TESTIMONIALS SECTION
 // =============================================================================
 function TestimonialsSection() {
+  const testimonials = [
+    {
+      name: "FRANK K",
+      text: "I would just like to sincerely thank you guys and say that I will solely be ordering tires from you guys from now on. Frank told me I'd have my 2 lost tyres here by the weekend and they got here today. Well done gentlemen thanks again!",
+      stars: "★★★★★"
+    },
+    {
+      name: "JAMES M",
+      text: "Exceptional service on the AR-1s. The technical advice regarding hot pressures was spot on for my Donington track day. Delivery was next day as promised.",
+      stars: "★★★★★"
+    },
+    {
+      name: "SARAH L",
+      text: "Finally found a supplier that actually understands EV specific requirements. The AS-3 EVs have significantly reduced cabin noise on my Model 3. Highly recommend.",
+      stars: "★★★★★"
+    },
+    {
+      name: "DAVID H",
+      text: "The NS-2R remains the best value track tyre in the UK, and Rubber Tech are the best place to get them. Fast, professional, and reliable.",
+      stars: "★★★★★"
+    },
+    {
+      name: "MIKE T",
+      text: "Switched to CR-S for the 2026 season and the grip is on another level. Thanks to the team for reaching out with updated fitment advice.",
+      stars: "★★★★★"
+    },
+    {
+      name: "ALEX G",
+      text: "Nankang specialists through and through. The delivery speed to Scotland was impressive. Will be use for my drift spares from now on.",
+      stars: "★★★★★"
+    }
+  ];
+
+  // Double the array for seamless infinite looping
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
+
   return (
-    <section className="bg-[#FCE145] py-24 sm:py-32 flex flex-col items-center justify-center text-center px-6 border-b border-black/10">
-      <div className="max-w-3xl mx-auto flex flex-col items-center">
-        <h2 className="font-display text-black text-[22px] sm:text-[32px] uppercase leading-none mb-6">
+    <section className="bg-[#F2F2F2] py-24 sm:py-32 overflow-hidden border-b border-black/5">
+      <div className="max-w-[1720px] mx-auto px-6 mb-16 sm:mb-20">
+        <h2 className="font-display text-black text-[22px] sm:text-[32px] uppercase leading-none text-center">
           WHAT OUR CUSTOMERS ARE SAYING
         </h2>
-        <div className="text-black text-[18px] sm:text-[24px] tracking-[6px] mb-8">
-          ★★★★★
-        </div>
-        <p className="font-body text-[#111111] text-[14px] sm:text-[16px] leading-[1.8] italic mb-8 max-w-2xl">
-          "I would just like to sincerely thank you guys and say that I will solely be ordering tires from you guys from now on. Frank told me I'd have my 2 lost tyres here by the weekend and they got here today. Well done gentlemen thanks again!"
-        </p>
-        <div className="font-mono text-black text-[12px] sm:text-[14px] uppercase tracking-[2px] font-bold">
-          FRANK K
-        </div>
+      </div>
+
+      <div className="relative flex whitespace-nowrap">
+        <motion.div 
+          className="flex gap-8 sm:gap-12 pl-8 sm:pl-12"
+          animate={{ x: ["-50%", "0%"] }}
+          transition={{ 
+            duration: 40, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+        >
+          {duplicatedTestimonials.map((item, index) => (
+            <div 
+              key={index} 
+              className="inline-flex flex-col items-start justify-between bg-white p-8 sm:p-12 w-[300px] sm:w-[450px] shrink-0 border border-black/5"
+            >
+              <div className="text-black text-[18px] tracking-[6px] mb-6">
+                {item.stars}
+              </div>
+              <p className="font-body text-[#111111] text-[14px] sm:text-[16px] leading-[1.8] italic mb-8 whitespace-normal">
+                "{item.text}"
+              </p>
+              <div className="font-mono text-black text-[12px] sm:text-[14px] uppercase tracking-[2px] font-bold">
+                {item.name}
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
