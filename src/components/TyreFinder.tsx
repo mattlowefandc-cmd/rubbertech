@@ -7,7 +7,8 @@ import { Search, Loader2, CheckCircle, ArrowRight } from "lucide-react";
 export default function TyreFinder() {
   const [activeTab, setActiveTab] = useState<"reg" | "size">("reg");
   const [regInput, setRegInput] = useState("");
-  const [vehicleFound, setVehicleFound] = useState(false);
+  const [vehicleData, setVehicleData] = useState<any>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   
   // Size Selection State
@@ -16,15 +17,27 @@ export default function TyreFinder() {
   const [rim, setRim] = useState("");
   const [speed, setSpeed] = useState("");
 
-  const handleRegSearch = (e: React.FormEvent) => {
+  const handleRegSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!regInput) return;
     setIsSearching(true);
-    // Simulate DVLA lookup
-    setTimeout(() => {
-      setVehicleFound(true);
+    setErrorMsg(null);
+    setVehicleData(null);
+
+    try {
+      const res = await fetch(`/api/vehicle?reg=${encodeURIComponent(regInput)}`);
+      const data = await res.json();
+      
+      if (data.success) {
+        setVehicleData(data.data);
+      } else {
+        setErrorMsg(data.error || "Vehicle not found.");
+      }
+    } catch (err) {
+      setErrorMsg("Connection error. Please try again or search by size.");
+    } finally {
       setIsSearching(false);
-    }, 1800);
+    }
   };
 
   const handleSizeSearch = (e: React.FormEvent) => {
@@ -38,7 +51,7 @@ export default function TyreFinder() {
       {/* Tab Switcher */}
       <div className="flex border-b border-black/10">
         <button
-          onClick={() => { setActiveTab("reg"); setVehicleFound(false); }}
+          onClick={() => { setActiveTab("reg"); setVehicleData(null); setErrorMsg(null); }}
           className={`flex-1 py-6 text-[11px] font-mono uppercase tracking-[2px] transition-all relative ${
             activeTab === "reg" ? "text-black" : "text-[#999999] hover:text-black"
           }`}
@@ -61,11 +74,16 @@ export default function TyreFinder() {
         {/* Registration Panel */}
         {activeTab === "reg" && (
           <div className="animate-in fade-in duration-700">
-            {!vehicleFound ? (
+            {!vehicleData ? (
               <form onSubmit={handleRegSearch} className="max-w-xl mx-auto">
                 <div className="text-center mb-12">
-                   <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">ARCHIVE_LOOKUP // DVLA_DIRECT</div>
+                   <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">API_LOOKUP // DVLA_CONNECTED</div>
                    <h3 className="font-display text-black text-[32px] uppercase leading-none">IDENTIFY VEHICLE</h3>
+                   {errorMsg && (
+                      <div className="mt-6 text-red-600 font-mono text-[11px] uppercase tracking-[1px] border border-red-200 bg-red-50 py-3 px-4">
+                        {errorMsg}
+                      </div>
+                   )}
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -100,32 +118,36 @@ export default function TyreFinder() {
                      <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4 flex items-center gap-2">
                         <CheckCircle size={12} className="text-black" /> VEHICLE_VERIFIED_SUCCESS
                      </div>
-                     <h3 className="font-display text-black text-[56px] uppercase leading-[0.9] mb-4">MERCEDES-BENZ <br/> E-CLASS (W213)</h3>
-                     <p className="font-mono text-[#999999] text-[12px] uppercase tracking-[2.5px]">2022 // E220D AMG LINE // 19&quot; WHEEL PACK</p>
+                     <h3 className="font-display text-black text-[56px] uppercase leading-[0.9] mb-4">{vehicleData.make} <br/> {vehicleData.model}</h3>
+                     <p className="font-mono text-[#999999] text-[12px] uppercase tracking-[2.5px]">{vehicleData.year || "Unknown Year"} // {vehicleData.variant || "Standard Edition"}</p>
                   </div>
                   <div className="flex flex-col items-end gap-4">
                      <div className="font-mono text-black text-[24px] tracking-[4px] border border-black/20 p-4 bg-[#fcfcfc]">
-                        {regInput}
+                        {vehicleData.registration || regInput}
                      </div>
-                     <button onClick={() => setVehicleFound(false)} className="font-mono text-[#999999] text-[10px] uppercase tracking-[1px] hover:text-black border-b border-black/10">RESET SEARCH_QUERY</button>
+                     <button onClick={() => setVehicleData(null)} className="font-mono text-[#999999] text-[10px] uppercase tracking-[1px] hover:text-black border-b border-black/10">RESET SEARCH_QUERY</button>
                   </div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-8 border-t border-black/10 pt-16">
-                  <div className="bg-[#fcfcfc] border border-black/5 p-10 group hover:border-black transition-colors">
-                    <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">FRONT_AXLE // PRIMARY</div>
-                    <div className="font-display text-black text-[36px] mb-4">245/40 R19 98Y</div>
-                    <Link href="/tyres/car?size=245/40R19" className="font-mono text-black text-[12px] uppercase tracking-[1px] flex items-center gap-2 group-hover:gap-4 transition-all">
-                       MATCHING INVENTORY <ArrowRight size={14} />
-                    </Link>
-                  </div>
-                  <div className="bg-[#fcfcfc] border border-black/5 p-10 group hover:border-black transition-colors">
-                    <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">REAR_AXLE // STAGGERED</div>
-                    <div className="font-display text-black text-[36px] mb-4">275/35 R19 100Y</div>
-                    <Link href="/tyres/car?size=275/35R19" className="font-mono text-black text-[12px] uppercase tracking-[1px] flex items-center gap-2 group-hover:gap-4 transition-all">
-                       MATCHING INVENTORY <ArrowRight size={14} />
-                    </Link>
-                  </div>
+                <div className={`grid ${vehicleData.rearTyres ? 'md:grid-cols-2' : 'grid-cols-1'} gap-8 border-t border-black/10 pt-16`}>
+                  {vehicleData.frontTyres && (
+                    <div className="bg-[#fcfcfc] border border-black/5 p-10 group hover:border-black transition-colors">
+                      <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">{vehicleData.frontTyres.label || "FRONT_AXLE // PRIMARY"}</div>
+                      <div className="font-display text-black text-[36px] mb-4">{vehicleData.frontTyres.size} {vehicleData.frontTyres.speed}</div>
+                      <Link href={`/tyres/car?size=${vehicleData.frontTyres.slug}`} className="font-mono text-black text-[12px] uppercase tracking-[1px] flex items-center gap-2 group-hover:gap-4 transition-all">
+                         MATCHING INVENTORY <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  )}
+                  {vehicleData.rearTyres && (
+                    <div className="bg-[#fcfcfc] border border-black/5 p-10 group hover:border-black transition-colors">
+                      <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px] mb-4">{vehicleData.rearTyres.label || "REAR_AXLE // STAGGERED"}</div>
+                      <div className="font-display text-black text-[36px] mb-4">{vehicleData.rearTyres.size} {vehicleData.rearTyres.speed}</div>
+                      <Link href={`/tyres/car?size=${vehicleData.rearTyres.slug}`} className="font-mono text-black text-[12px] uppercase tracking-[1px] flex items-center gap-2 group-hover:gap-4 transition-all">
+                         MATCHING INVENTORY <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
