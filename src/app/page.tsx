@@ -101,22 +101,22 @@ function HeroSection() {
       <div ref={pinRef} className="h-screen w-full relative flex items-center justify-center overflow-hidden bg-white">
         
         {/* Transparent Tyre Sequence centered */}
-        <div className="absolute inset-0 z-0 bg-white flex items-center justify-center">
+        <div className="absolute inset-0 z-0 bg-white flex items-center justify-center pointer-events-none">
           <TyreSequence
             ref={tyreRef}
             mode="scrub"
             scrollProgress={0} 
             width={2000}
             height={1200}
-            className="w-full h-full scale-150 translate-y-16 sm:scale-100 sm:translate-y-0"
+            className="w-full h-full scale-[1.8] translate-y-8 sm:scale-100 sm:translate-y-0"
           />
         </div>
 
         {/* Foreground Content */}
-        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-between pb-24 pt-32 sm:pt-20 sm:justify-end sm:pb-32 pointer-events-none">
+        <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-between pb-24 pt-[150px] sm:pt-20 sm:justify-end sm:pb-32 pointer-events-none">
           
           {/* Mobile Headlines (< 640px) */}
-          <div className="relative z-20 sm:hidden mt-8">
+          <div className="relative z-20 sm:hidden mt-2">
             <div className="relative min-h-[140px]">
               <h1
                 ref={mobileH1Ref}
