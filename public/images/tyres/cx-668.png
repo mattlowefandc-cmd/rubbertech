@@ -1,0 +1,401 @@
+<!--[if !IE]><!-->
+<html lang="en-GB">
+<!--<![endif]-->
+<!--[if IE 6 ]><html lang="en-GB" class="ie ie6"><![endif]-->
+<!--[if IE 7 ]><html lang="en-GB" class="ie ie7"><![endif]-->
+<!--[if IE 8 ]><html lang="en-GB" class="ie ie8"><![endif]-->
+
+<head>
+
+    <base href="https://test21.2221.co.uk/"><!--[if lte IE 6]></base><![endif]-->
+    <title>Page not found </title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="generator" content="SilverStripe - https://www.silverstripe.org" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>    <link rel="stylesheet" type="text/css" href="/_resources/themes/nankang/dist/flaticons/flaticon.css"/>
+    <link rel="stylesheet" type="text/css" href="/_resources/themes/nankang/dist/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/_resources/themes/nankang/dist/slick/slick.css"/>
+    <link href="/_resources/themes/nankang/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/_resources/themes/nankang/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/_resources/themes/nankang/css/media.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" type="text/css" href="/_resources/themes/nankang/css/custom.css?m=1522084695" />
+<link rel="stylesheet" type="text/css" href="/_resources/themes/nankang/css/custom1.css?m=1694131747" />
+</head>
+
+<body>
+
+<header class=" black_header  " >
+    <div class="container">
+        <div class="row">
+            <div class="top_panel" >
+                <div>
+                    <div class="logo"> <a href="https://test21.2221.co.uk/" title="home page"><img src="/_resources/themes/nankang/img/logo.png" alt="Nankang Tyre UK"></a> </div>
+                    <!-- /logo -->
+                </div>
+                <div>
+                    
+
+                    <nav class="navbar navbar-default" >
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <div class="menu_button navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class='toggle'><i></i> <i></i> <i></i></span> </div>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav " >
+
+                                
+
+                                    
+                                    <li  class="  ">
+
+
+                                        
+
+                                            <a href="/" title="Home"><span>Home</span></a>
+                                        
+
+
+
+
+                                    </li>
+
+                                    
+                                
+
+                                    
+                                    <li  class="  ">
+
+
+                                        
+
+                                            <a href="/about-us/" title="Who we are"><span>About Us</span></a>
+                                        
+
+
+
+
+                                    </li>
+
+                                    
+                                
+
+                                    
+                                    <li  class="   has_child">
+
+
+                                        
+                                            <a href="/page-not-found/#" ><span>Products</span><i class="caret"></i></a>
+                                        <ul class="sub_menu">
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/car/" title="Car"><i class="slash">//</i> Car</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/ev/" title="EV "><i class="slash">//</i> EV </a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/commercial/" title="Commercial"><i class="slash">//</i> Commercial</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/retro/" title="Retro"><i class="slash">//</i> Retro</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/motorsport/" title="Motorsport"><i class="slash">//</i> Motorsport</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/cuv-suv/" title="SUV / CUV"><i class="slash">//</i> SUV / CUV</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/4x4-suv/" title="4x4"><i class="slash">//</i> 4x4</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/winter/" title="Winter"><i class="slash">//</i> Winter</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/all-season/" title="All-Season"><i class="slash">//</i> All-Season</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/runflat/" title="Runflat"><i class="slash">//</i> Runflat</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                                <li>
+
+                                                    
+                                                        <a href="/products/motorcycle/" title="Motorcycle"><i class="slash">//</i> Motorcycle</a>
+                                                    
+
+                                                </li>
+
+                                            
+                                            </ul>
+                                        
+
+
+
+
+                                    </li>
+
+                                    
+                                
+
+                                    
+                                    <li  class="  ">
+
+
+                                        
+
+                                            <a href="/dealers/" title="Dealers"><span>Dealers</span></a>
+                                        
+
+
+
+
+                                    </li>
+
+                                    
+                                
+
+                                    
+                                    <li  class="  ">
+
+
+                                        
+
+                                            <a href="/warranty/" title="Road Hazard Warranty"><span>Road Hazard Warranty</span></a>
+                                        
+
+
+
+
+                                    </li>
+
+                                    
+                                
+
+                                    
+
+                                    <li  class=" ">
+                                        <a href="/news-and-events/" title="News &amp; Events"><span>News &amp; Events</span></a>
+
+                                    </li>
+                                    
+                                
+
+                                    
+                                    <li  class="  ">
+
+
+                                        
+
+                                            <a href="/contact-us/" title="Contact Nankang Tyre UK"><span>Contact </span></a>
+                                        
+
+
+
+
+                                    </li>
+
+                                    
+                                
+
+
+
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </nav>
+                    
+                </div>
+            </div>
+            <!-- /top_panel -->
+
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+
+</header>
+
+<div class="page_wrapper">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 block cmsContent">
+
+                <h1>Page not found</h1>
+<p>Sorry, it seems you were trying to access a page that doesn't exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>
+
+            </div>
+       </div>
+    </div>
+
+</div>
+
+
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer_body plpr">
+                <div class="footer_header">
+                    <div class="f_logo"> <a href="https://test21.2221.co.uk/" class="img_cont"><img src="/_resources/themes/nankang/img/logo.png" alt=""></a> </div>
+                    <p>COPYRIGHT © Nankang Tyre UK 2024 <br>
+                        ALL RIGHTS RESERVED <br>
+                        SELECTED IMAGERY AND CONTENT © Nankang Tyre UK </p>
+                </div>
+                <!-- /footer_header -->
+
+                <div class="footer_links">
+                    <ul>
+                        
+                            <li><a href="/" title="Home">Home</a></li>
+                        
+
+
+                    </ul>
+                    <ul>
+                        
+                            <li><a href="/footer/footer-column-2/cookie-policy/" title="Cookie Policy">Cookie Policy </a></li>
+                        
+                            <li><a href="/footer/footer-column-2/privacy-policy/" title="Privacy policy">Privacy policy </a></li>
+                        
+                            <li><a href="/footer/footer-column-2/terms-and-conditions/" title="Terms &amp; Conditions">Terms &amp; Conditions </a></li>
+                        
+                    </ul>
+                    <ul>
+<li>Nankang Tyre UK</li>
+<li>1 SGS Business Park</li>
+<li>Oldbury Road</li>
+<li>West Bromwich</li>
+<li>West Midlands</li>
+<li>B70 9DP</li>
+</ul>
+                    <ul>
+                        
+                            <li><a href="/footer/footer-column-3/become-a-nankang-tyre-dealer/" title="Dealer downloads">Dealer downloads</a></li>
+                        
+                    </ul>
+                </div>
+                <!-- /footer_links -->
+
+            </div>
+            <!-- /footer_body -->
+
+            <div class="card_div text-center">
+                <img src="/_resources/themes/nankang/img/Visa-Mastercard-Logos.png" class="  d-inline-block mb-3" style="width: 100px;">
+
+            </div>
+            <!-- /share_div -->
+            <div class="share_div">
+                <ul>
+
+    <li><a href="https://www.facebook.com/pages/Nankang-UK/294052817289104" title="facebook" target="_blank"><span class="flaticon-social-facebook-circular-button"></span></a></li>
+    <li><a href="https://twitter.com/NankangTyreUK" title="twitter"  target="_blank"><span class="flaticon-twitter"></span></a></li>
+    <li><a href="https://www.instagram.com/nankangtyreuk/" title="instagram" target="_blank"><span class="flaticon-instagram-logo"></span></a></li>
+    <li><a href="http://www.youtube.com/channel/UCX5RL9LY-BNNu96a5ds2gAw"  title="youtube" target="_blank"><span class="flaticon-social-youtube-circular-button"></span></a></li>
+</ul>
+
+            </div><!-- /share_div -->
+
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</footer>
+<div id="toTop"><span>&#9650;</span></div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-47700528-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-47700528-2');
+</script>
+
+<script src="/_resources/themes/nankang/js/jquery-1.12.4.min.js"></script>
+<script src="/_resources/themes/nankang/js/ie-placeholder.js"></script>
+<script src="/_resources/themes/nankang/js/plugins/slick.min.js"></script>
+<script src="/_resources/themes/nankang/js/jquery.matchHeight.js"></script>
+<script src="/_resources/themes/nankang/js/bootstrap.min.js"></script>
+
+
+
+
+<script src="/_resources/themes/nankang/js/script.js"></script>
+</body>
+</html>

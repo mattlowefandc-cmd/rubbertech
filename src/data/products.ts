@@ -568,6 +568,166 @@ export const evProducts: TyreProduct[] = [
     ],
   },
 ];
+// =============================================================================
+// COMMERCIAL TYRES
+// =============================================================================
+
+export const commercialProducts: TyreProduct[] = [
+  {
+    id: "cw-20", slug: "cw-20", name: "CW-20", tagline: "Commercial Van Tyre", 
+    description: "Designed for local or motorway use, offering high durability.",
+    features: ["High durability", "Suitable for local and motorway use"],
+    usageSplit: "100% Road", category: "commercial", priceFrom: 65, image: "/images/tyres/cw-20.png", featured: false, sizes: [], seoTitle: "Nankang CW-20 Tyres", seoDescription: "Buy CW-20 tyres.", expertView: "Great choice for commercial vans."
+  },
+  {
+    id: "cw-25", slug: "cw-25", name: "CW-25", tagline: "Commercial Van Tyre", 
+    description: "Trailer / Caravan and Commercial van fitments.",
+    features: ["Suitable for trailers and caravans"],
+    usageSplit: "100% Road", category: "commercial", priceFrom: 65, image: "/images/tyres/cw-25.png", featured: false, sizes: [], seoTitle: "Nankang CW-25 Tyres", seoDescription: "Buy CW-25 tyres.", expertView: "Reliable for heavy loads."
+  },
+  {
+    id: "cw-30", slug: "cw-30", name: "CW-30", tagline: "High Performance Commercial", 
+    description: "A brand new commercial tyre for high performance van.",
+    features: ["High performance design"],
+    usageSplit: "100% Road", category: "commercial", priceFrom: 70, image: "/images/tyres/cw-30.png", featured: false, sizes: [], seoTitle: "Nankang CW-30 Tyres", seoDescription: "Buy CW-30 tyres.", expertView: "Ideal for modern performance vans."
+  },
+  {
+    id: "nr-066", slug: "nr-066", name: "NR-066", tagline: "Commercial Tube Type", 
+    description: "The Nankang NR-066 is a tube type commercial tyre suitable for large light truck and trailer applications.",
+    features: ["Tube type tyre", "Suitable for large light truck and trailer applications"],
+    usageSplit: "100% Road", category: "commercial", priceFrom: 70, image: "/images/tyres/nr-066.png", featured: false, sizes: [], seoTitle: "Nankang NR-066 Tyres", seoDescription: "Buy NR-066 tyres.", expertView: "Durable and reliable."
+  },
+  {
+    id: "ha-858", slug: "ha-858", name: "HA-858", tagline: "Multi Position Truck Tyre", 
+    description: "Hard wearing multi position truck tyre.",
+    features: ["Hard wearing", "Multi position"],
+    usageSplit: "100% Road", category: "commercial", priceFrom: 85, image: "/images/tyres/ha-858.png", featured: false, sizes: [], seoTitle: "Nankang HA-858 Tyres", seoDescription: "Buy HA-858 tyres.", expertView: "For heavy duty usage."
+  },
+  {
+    id: "tr-10", slug: "tr-10", name: "TR-10", tagline: "Trailer Tyre", 
+    description: "Trailer tyres with high durability.",
+    features: ["High durability"],
+    usageSplit: "100% Road", category: "commercial", priceFrom: 55, image: "/images/tyres/tr-10.png", featured: false, sizes: [], seoTitle: "Nankang TR-10 Tyres", seoDescription: "Buy TR-10 tyres.", expertView: "Excellent trailer option."
+  }
+];
+
+// =============================================================================
+// WINTER TYRES
+// =============================================================================
+
+export const winterProducts: TyreProduct[] = [
+  {
+    id: "sv-4", slug: "sv-4", name: "SV-4", tagline: "Winter Performance", 
+    description: "Latest generation winter car pattern for ultimate cold weather grip.",
+    features: ["Superior cold weather grip", "Winter 3PMSF approved"],
+    usageSplit: "100% Road", category: "winter", priceFrom: 65, image: "/images/tyres/sv-4.jpg", featured: true, sizes: [], seoTitle: "Nankang SV-4 Winter Tyres", seoDescription: "Buy SV-4 winter tyres.", expertView: "Top winter recommendation."
+  },
+  {
+    id: "sv-3", slug: "sv-3", name: "SV-3", tagline: "Winter Car Pattern", 
+    description: "Winter tyre offering fantastic reassurance in icy conditions.",
+    features: ["Fantastic reassurance in icy conditions"],
+    usageSplit: "100% Road", category: "winter", priceFrom: 60, image: "/images/tyres/sv-3.png", featured: false, sizes: [], seoTitle: "Nankang SV-3 Tyres", seoDescription: "Buy SV-3 tyres.", expertView: "Solid winter performance."
+  },
+  {
+    id: "sv-55", slug: "sv-55", name: "SV-55", tagline: "4x4 / SUV Winter", 
+    description: "4x4 / SUV Winter tyre built for heavier vehicles in winter.",
+    features: ["Ideal for heavier vehicles"],
+    usageSplit: "100% Road", category: "winter", priceFrom: 80, image: "/images/tyres/sv-55.png", featured: false, sizes: [], seoTitle: "Nankang SV-55 Tyres", seoDescription: "Buy SV-55 tyres.", expertView: "Best for winter SUVs."
+  },
+  {
+    id: "sl-6", slug: "sl-6", name: "SL-6", tagline: "Commercial Winter", 
+    description: "Commercial winter tyre ensuring delivery stays on track.",
+    features: ["Ensures delivery stays on track"],
+    usageSplit: "100% Road", category: "winter", priceFrom: 75, image: "/images/tyres/sl-6.png", featured: false, sizes: [], seoTitle: "Nankang SL-6 Tyres", seoDescription: "Buy SL-6 tyres.", expertView: "Essential for commercial winter fleets."
+  },
+  {
+    id: "ice-1", slug: "ice-1", name: "ICE-1", tagline: "Specialist Winter", 
+    description: "Specialist winter tyre for BMW i3.",
+    features: ["Specialist fitment"],
+    usageSplit: "100% Road", category: "winter", priceFrom: 90, image: "/images/tyres/ice-1.png", featured: false, sizes: [], seoTitle: "Nankang ICE-1 Tyres", seoDescription: "Buy ICE-1 tyres.", expertView: "Perfect for EVs in winter."
+  }
+];
+
+// =============================================================================
+// SUV TYRES
+// =============================================================================
+
+export const suvProducts: TyreProduct[] = [
+  {
+    id: "sp-9", slug: "sp-9", name: "SP-9", tagline: "SUV Touring", 
+    description: "Comfortable and quiet running SUV touring tyre.",
+    features: ["Quiet running", "Comfortable"],
+    usageSplit: "100% Road", category: "suv", priceFrom: 75, image: "/images/tyres/sp-9.png", featured: true, sizes: [], seoTitle: "Nankang SP-9 Tyres", seoDescription: "Buy SP-9 tyres.", expertView: "Very refined SUV option."
+  },
+  {
+    id: "sp-7", slug: "sp-7", name: "SP-7", tagline: "SUV Performance", 
+    description: "High performance tyre for modern SUVs.",
+    features: ["High performance capabilities"],
+    usageSplit: "100% Road", category: "suv", priceFrom: 85, image: "/images/tyres/sp-7.png", featured: false, sizes: [], seoTitle: "Nankang SP-7 Tyres", seoDescription: "Buy SP-7 tyres.", expertView: "Great for quick SUVs."
+  },
+  {
+    id: "nex-1", slug: "nex-1", name: "NEX-1", tagline: "Modern CUV", 
+    description: "New generation tyre designed for modern CUVs.",
+    features: ["Modern CUV capability"],
+    usageSplit: "100% Road", category: "suv", priceFrom: 70, image: "/images/tyres/nex-1.jpg", featured: false, sizes: [], seoTitle: "Nankang NEX-1 Tyres", seoDescription: "Buy NEX-1 tyres.", expertView: "Solid daily utility tyre."
+  }
+];
+
+// =============================================================================
+// RETRO TYRES
+// =============================================================================
+
+export const retroProducts: TyreProduct[] = [
+  {
+    id: "cx-668", slug: "cx-668", name: "CX-668", tagline: "Retro Commuter", 
+    description: "Retro styled commuter tyre.",
+    features: ["Classic pattern"],
+    usageSplit: "100% Road", category: "retro", priceFrom: 50, image: "/images/tyres/cx-668.png", featured: false, sizes: [], seoTitle: "Nankang CX-668 Tyres", seoDescription: "Buy CX-668 tyres.", expertView: "Great commuter classic."
+  },
+  {
+    id: "n-605", slug: "n-605", name: "N-605", tagline: "White Ribbon", 
+    description: "Classic styled tyre with a 20mm White Ribbon (WR).",
+    features: ["20mm White Ribbon sidewall"],
+    usageSplit: "100% Road", category: "retro", priceFrom: 65, image: "/images/tyres/n-605.png", featured: true, sizes: [], seoTitle: "Nankang N-605 Tyres", seoDescription: "Buy N-605 tyres.", expertView: "Perfect for classic restorations."
+  },
+  {
+    id: "n-729", slug: "n-729", name: "N-729", tagline: "Classic Fitment", 
+    description: "Classic and Retro Aussie, European and US sizes.",
+    features: ["Wide range of classic sizes", "White lettering"],
+    usageSplit: "100% Road", category: "retro", priceFrom: 75, image: "/images/tyres/n-729.png", featured: false, sizes: [], seoTitle: "Nankang N-729 Tyres", seoDescription: "Buy N-729 tyres.", expertView: "Great for muscle cars and classics."
+  },
+  {
+    id: "na-1-wr", slug: "na-1-wr", name: "NA-1 WR", tagline: "Commuter White Ribbon", 
+    description: "A daily commuter tyre for small car fitments with a white ribbon.",
+    features: ["White ribbon", "Small car fitment"],
+    usageSplit: "100% Road", category: "retro", priceFrom: 55, image: "/images/tyres/na-1-wr.png", featured: false, sizes: [], seoTitle: "Nankang NA-1 WR", seoDescription: "Buy NA-1 WR tyres.", expertView: "Small classic application."
+  }
+];
+
+// =============================================================================
+// MOTORCYCLE TYRES
+// =============================================================================
+
+export const motorcycleProducts: TyreProduct[] = [
+  {
+    id: "wf-1", slug: "wf-1", name: "WF-1", tagline: "Sports Touring", 
+    description: "WF-1 is a sports touring tyre designed for long mileage and great wet grip.",
+    features: ["Sports touring design", "Long mileage"],
+    usageSplit: "100% Road", category: "motorcycle", priceFrom: 80, image: "/images/tyres/wf-1.png", featured: true, sizes: [], seoTitle: "Nankang WF-1 Tyres", seoDescription: "Buy WF-1 tyres.", expertView: "Solid sports touring choice."
+  },
+  {
+    id: "wf-2", slug: "wf-2", name: "WF-2", tagline: "Modern Superbike", 
+    description: "WF-2 is a tyre designed for modern superbike and sportsbike riders.",
+    features: ["Superbike performance"],
+    usageSplit: "100% Road", category: "motorcycle", priceFrom: 95, image: "/images/tyres/wf-2.png", featured: false, sizes: [], seoTitle: "Nankang WF-2 Tyres", seoDescription: "Buy WF-2 tyres.", expertView: "Great performance edge."
+  },
+  {
+    id: "sf-347", slug: "sf-347", name: "SF-347", tagline: "Sporty Scooter", 
+    description: "Scooter tyre designed to have excellent dry grip and sporty feel.",
+    features: ["Sporty scooter response"],
+    usageSplit: "100% Road", category: "motorcycle", priceFrom: 45, image: "/images/tyres/sf-347.png", featured: false, sizes: [], seoTitle: "Nankang SF-347 Tyres", seoDescription: "Buy SF-347 tyres.", expertView: "Fun and agile scooter tyre."
+  }
+];
 
 // =============================================================================
 // ALL PRODUCTS AGGREGATED
@@ -579,6 +739,11 @@ export const allProducts: TyreProduct[] = [
   ...fourByFourProducts,
   ...allSeasonProducts,
   ...evProducts,
+  ...commercialProducts,
+  ...winterProducts,
+  ...suvProducts,
+  ...retroProducts,
+  ...motorcycleProducts,
 ];
 
 export const featuredProducts = allProducts.filter((p) => p.featured);
