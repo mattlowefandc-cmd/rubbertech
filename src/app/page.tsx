@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TyreSequence, { type TyreSequenceHandle } from "@/components/TyreSequence";
 import { featuredProducts } from "@/data/products";
+import { blogPosts } from "@/data/blog";
 
 import { motion } from "framer-motion";
 
@@ -493,6 +494,57 @@ function TestimonialsSection() {
 }
 
 // =============================================================================
+// BLOG PREVIEW SECTION
+// =============================================================================
+function BlogPreviewSection() {
+  return (
+    <section className="bg-white py-24 sm:py-40 border-b border-black/10">
+      <div className="max-w-[1720px] mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+          <div className="max-w-2xl">
+            <div className="font-mono text-[#999999] text-[12px] sm:text-[14px] uppercase tracking-[2px] mb-8">EDITORIAL // INSIGHTS</div>
+            <h2 className="font-display text-black text-[32px] sm:text-[56px] lg:text-[72px] uppercase leading-[0.95] tracking-tight">
+              TECHNICAL <br className="hidden sm:block" /> DEBRIEFS & NEWS
+            </h2>
+          </div>
+          <Link 
+            href="/blog" 
+            className="font-mono text-black text-[13px] sm:text-[14px] uppercase tracking-[1.4px] border border-black px-10 py-4 hover:bg-black hover:text-white transition-colors duration-300"
+          >
+            VIEW ALL ARCHIVE
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          {blogPosts.slice(0, 3).map((post) => (
+            <Link 
+              key={post.slug} 
+              href={`/blog/${post.slug}`} 
+              className="group flex flex-col h-full border border-black/5 hover:border-black/20 transition-all duration-300 bg-[#fcfcfc] p-8 sm:p-10"
+            >
+              <div className="flex justify-between items-start mb-12">
+                <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[2px]">[{post.category}]</div>
+                <div className="font-mono text-black text-[11px] uppercase tracking-[1px]">{post.date}</div>
+              </div>
+              <h3 className="font-display text-black text-[24px] sm:text-[28px] uppercase leading-tight mb-8 group-hover:underline underline-offset-4 decoration-1">
+                {post.title}
+              </h3>
+              <p className="font-body text-[#777777] text-[14px] sm:text-[15px] leading-relaxed mb-auto line-clamp-3">
+                {post.excerpt}
+              </p>
+              <div className="mt-12 pt-8 border-t border-black/5 flex items-center justify-between">
+                <span className="font-mono text-black text-[12px] uppercase tracking-[1.4px]">READ ARTICLE</span>
+                <span className="text-black group-hover:translate-x-2 transition-transform duration-300">→</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
 // PAGE COMPOSITION
 // =============================================================================
 export default function HomePage() {
@@ -503,6 +555,7 @@ export default function HomePage() {
       <ProductSpotlight />
       <TyreFinderCTA />
       <TestimonialsSection />
+      <BlogPreviewSection />
       <ExpertiseSection />
     </main>
   );
