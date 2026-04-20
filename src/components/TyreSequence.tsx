@@ -32,8 +32,8 @@ export interface TyreSequenceHandle {
 }
 
 // Hardcoded for performance - avoiding slow auto-detection
-const FRAME_COUNT = 160;
-const FRAME_PATTERN = (i: number) => `/sequences/tyre/frame_${String(i).padStart(3, "0")}.jpg`;
+const FRAME_COUNT = 192;
+const FRAME_PATTERN = (i: number) => `/sequences/tyre/frame_${String(i).padStart(4, "0")}.png`;
 
 // Mobile: load every Nth frame to reduce memory
 const MOBILE_FRAME_SKIP = 3;
