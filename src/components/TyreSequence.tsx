@@ -281,7 +281,7 @@ const TyreSequence = forwardRef<TyreSequenceHandle, TyreSequenceProps>(
             background: "#ffffff",
             opacity: showCanvas ? 1 : 0,
             transition: "opacity 0.4s ease",
-            objectFit: "contain",
+            objectFit: "cover",
             imageRendering: "auto",
           }}
           aria-label="Rotating Nankang tyre animation"

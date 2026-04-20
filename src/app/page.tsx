@@ -109,9 +109,9 @@ function HeroSection() {
             ref={tyreRef}
             mode="scrub"
             scrollProgress={0} 
-            width={2000}
-            height={1200}
-            className="w-full h-full scale-[1.8] translate-y-8 sm:scale-100 sm:translate-y-0"
+            width={2400}
+            height={1350}
+            className="w-full h-full"
           />
         </div>
 
@@ -123,14 +123,14 @@ function HeroSection() {
             <div className="relative min-h-[140px] w-full flex justify-center">
               <h1
                 ref={mobileH1Ref}
-                className="absolute top-0 w-full text-center font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
+                className="absolute top-0 w-full text-center font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto"
                 style={{ fontSize: "clamp(1.5rem, 8.5vw, 160px)" }}
               >
                 PRECISION<br />RUBBER
               </h1>
               <h2
                 ref={mobileH2Ref}
-                className="absolute top-0 w-full text-center font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
+                className="absolute top-0 w-full text-center font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto"
                 style={{ fontSize: "clamp(1.4rem, 8vw, 120px)" }}
               >
                 ENGINEERED FOR<br />PERFORMANCE
