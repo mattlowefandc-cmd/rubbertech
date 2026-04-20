@@ -71,7 +71,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         <div className="mb-40 flex flex-col lg:flex-row justify-between items-start gap-12">
           <div className="max-w-4xl">
             <div className="font-mono text-black text-[14px] uppercase tracking-[2px] mb-8 border-b border-black/10 pb-4 inline-block">{dna.title}</div>
-            <h1 className="font-display font-normal text-black uppercase leading-[0.9] mb-12" style={{ fontSize: "clamp(3.5rem, 12vw, 180px)" }}>
+            <h1 className="font-display font-normal text-black uppercase leading-[0.9] mb-12 whitespace-nowrap tracking-tight" style={{ fontSize: "clamp(2rem, 9vw, 180px)" }}>
               {categoryTitle}
             </h1>
             <p className="font-mono text-[#999999] text-[13px] uppercase tracking-[1.4px] max-w-2xl leading-[1.8]">

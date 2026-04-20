@@ -62,7 +62,7 @@ export default async function AllTyresPage({
             <div className="font-mono text-[#999999] text-[12px] sm:text-[14px] uppercase tracking-[2px] mb-6 sm:mb-8">
               {isFiltered ? "FILTERED RESULTS" : "INVENTORY ARCHIVE"}
             </div>
-            <h1 className="font-display font-normal text-black uppercase leading-[0.9] mb-8 sm:mb-12" style={{ fontSize: "clamp(2.5rem, 12vw, 180px)" }}>
+            <h1 className="font-display font-normal text-black uppercase leading-[0.9] mb-8 sm:mb-12 whitespace-nowrap tracking-tight" style={{ fontSize: "clamp(1.2rem, 8vw, 180px)" }}>
               {isFiltered ? "MATCHING SPEC" : "THE FULL RANGE"}
             </h1>
             <p className="font-mono text-[#111111] text-[12px] sm:text-[14px] uppercase tracking-[1.4px]">
