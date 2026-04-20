@@ -97,21 +97,25 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 className="group flex flex-col h-full bg-white transition-opacity hover:opacity-90"
               >
                 {/* Asset Silhoutte */}
-                <div className="relative aspect-square w-full bg-[#fcfcfc] border border-black/10 flex items-center justify-center p-8 overflow-hidden group-hover:bg-[#f5f5f5] transition-colors">
+                <div className="relative aspect-square w-full bg-[#fcfcfc] border border-black/10 overflow-hidden group-hover:bg-[#f5f5f5] transition-colors">
                   {product.badge && (
-                    <span className="absolute top-6 left-6 font-mono text-black text-[11px] uppercase tracking-[1.4px] z-10 bg-white/80 px-2 py-1">
+                    <span className="absolute top-6 left-6 font-mono text-black text-[11px] uppercase tracking-[1.4px] z-20 bg-white/80 px-2 py-1">
                       [{product.badge}]
                     </span>
                   )}
                   <div className="absolute inset-x-0 bottom-0 h-[1px] bg-black/5" />
                   
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 relative z-10" 
-                  />
+                  <div className="absolute inset-0 z-10 p-8">
+                    <img 
+                      src={product.image} 
+                      alt={product.name} 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
+                    />
+                  </div>
                   
-                  <span className="font-display text-black/5 text-[90px] uppercase font-bold tracking-tighter absolute rotate-90 z-0">{product.name}</span>
+                  <div className="absolute inset-0 flex items-center justify-center z-0">
+                    <span className="font-display text-black/5 text-[90px] uppercase font-bold tracking-tighter rotate-90">{product.name}</span>
+                  </div>
                 </div>
 
                 <div className="pt-8 flex flex-col justify-between flex-grow">
