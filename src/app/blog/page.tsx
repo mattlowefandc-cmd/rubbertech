@@ -1,31 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { blogPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "BLOG & ADVICE | RUBBER TECH",
   description: "Technical tyre advice, motorsport news, and Nankang product updates.",
 };
 
-const posts = [
-  {
-    title: "NS-2R VS AR-1: WHICH COMPOUND DO YOU NEED?",
-    date: "MARCH 12, 2026",
-    category: "TECHNICAL",
-    excerpt: "UNDERSTANDING THE PERFORMANCE GAP BETWEEN THE UK'S FAVOURITE TRACK DAY TYRE AND ITS SEMI-SLICK BIG BROTHER."
-  },
-  {
-    title: "PREPARING YOUR EV FOR WINTER TRANSITIONS",
-    date: "FEBRUARY 28, 2026",
-    category: "GUIDE",
-    excerpt: "HOW COLD TEMPERATURES AFFECT EV RANGE AND WHY THE AS-3 EV COMPOUND IS A GAME-CHANGER FOR TESLA OWNERS."
-  },
-  {
-    title: "NANKANG CR-S: THE 2026 SEASON PREVIEW",
-    date: "JANUARY 15, 2026",
-    category: "NEWS",
-    excerpt: "WE GO DEEP ON THE NEWEST SIZES JOINING THE CR-S LINEUP FOR THE UPCOMING TIME ATTACK SEASON."
-  }
-];
+const posts = blogPosts;
 
 export default function BlogPage() {
   return (
@@ -44,7 +26,7 @@ export default function BlogPage() {
 
         <div className="grid lg:grid-cols-1 gap-12">
           {posts.map((post) => (
-            <article key={post.title} className="group border-t border-black/10 pt-16 pb-16 flex flex-col lg:flex-row gap-12 hover:bg-[#fcfcfc] transition-colors px-4 -mx-4 cursor-pointer">
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="group border-t border-black/10 pt-16 pb-16 flex flex-col lg:flex-row gap-12 hover:bg-[#fcfcfc] transition-colors px-4 -mx-4 cursor-pointer block">
               <div className="lg:w-1/4">
                 <div className="font-mono text-black text-[12px] uppercase tracking-[2px] mb-2">{post.date}</div>
                 <div className="font-mono text-[#999999] text-[10px] uppercase tracking-[1.4px]">[{post.category}]</div>
@@ -60,7 +42,7 @@ export default function BlogPage() {
                   READ DEBRIEF
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 

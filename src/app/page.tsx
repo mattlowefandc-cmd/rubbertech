@@ -411,6 +411,30 @@ function ExpertiseSection() {
 }
 
 // =============================================================================
+// TESTIMONIALS SECTION
+// =============================================================================
+function TestimonialsSection() {
+  return (
+    <section className="bg-[#FCE145] py-24 sm:py-32 flex flex-col items-center justify-center text-center px-6 border-b border-black/10">
+      <div className="max-w-3xl mx-auto flex flex-col items-center">
+        <h2 className="font-display text-black text-[22px] sm:text-[32px] uppercase leading-none mb-6">
+          WHAT OUR CUSTOMERS ARE SAYING
+        </h2>
+        <div className="text-black text-[18px] sm:text-[24px] tracking-[6px] mb-8">
+          ★★★★★
+        </div>
+        <p className="font-body text-[#111111] text-[14px] sm:text-[16px] leading-[1.8] italic mb-8 max-w-2xl">
+          "I would just like to sincerely thank you guys and say that I will solely be ordering tires from you guys from now on. Frank told me I'd have my 2 lost tyres here by the weekend and they got here today. Well done gentlemen thanks again!"
+        </p>
+        <div className="font-mono text-black text-[12px] sm:text-[14px] uppercase tracking-[2px] font-bold">
+          FRANK K
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
 // PAGE COMPOSITION
 // =============================================================================
 export default function HomePage() {
@@ -420,6 +444,7 @@ export default function HomePage() {
       <TyreRangeSection />
       <ProductSpotlight />
       <TyreFinderCTA />
+      <TestimonialsSection />
       <ExpertiseSection />
     </main>
   );
