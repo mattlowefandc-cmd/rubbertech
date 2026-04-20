@@ -117,18 +117,18 @@ function HeroSection() {
           
           {/* Mobile Headlines (< 640px) */}
           <div className="relative z-20 sm:hidden mt-2 tracking-tight">
-            <div className="relative min-h-[140px]">
+            <div className="relative min-h-[140px] w-full flex justify-center">
               <h1
                 ref={mobileH1Ref}
-                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
-                style={{ fontSize: "clamp(1.5rem, 10vw, 160px)" }}
+                className="absolute top-0 w-full text-center font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
+                style={{ fontSize: "clamp(1.5rem, 8.5vw, 160px)" }}
               >
                 PRECISION<br />RUBBER
               </h1>
               <h2
                 ref={mobileH2Ref}
-                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
-                style={{ fontSize: "clamp(1.4rem, 9vw, 120px)" }}
+                className="absolute top-0 w-full text-center font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
+                style={{ fontSize: "clamp(1.4rem, 8vw, 120px)" }}
               >
                 ENGINEERED FOR<br />PERFORMANCE
               </h2>
@@ -168,7 +168,7 @@ function HeroSection() {
             </h2>
           </div>
 
-          <div className="max-w-7xl relative z-30">
+          <div className="max-w-7xl relative z-30 flex flex-col items-center sm:items-start text-center sm:text-left">
             <p
               ref={subcopyRef}
               className="font-mono text-black text-[11px] sm:text-[16px] uppercase tracking-[1.4px] mt-8 sm:mt-4 opacity-0 pointer-events-auto leading-relaxed max-w-[280px] sm:max-w-none"
@@ -177,7 +177,7 @@ function HeroSection() {
               AUTHORISED NANKANG DEALER.<br className="sm:hidden" /> FITTED IN WARWICK.
             </p>
 
-            <div ref={ctasRef} className="mt-6 sm:mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 opacity-0 pointer-events-auto">
+            <div ref={ctasRef} className="mt-6 sm:mt-12 w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 opacity-0 pointer-events-auto">
               <Link
                 href="/tyre-finder"
                 className="inline-flex items-center justify-center font-mono text-[13px] sm:text-[14px] uppercase tracking-[1.4px] text-white bg-black border border-black rounded-[4px] px-8 py-4 sm:px-10 sm:py-5 hover:bg-transparent hover:text-black transition-colors duration-300 min-h-[56px] sm:min-h-[48px] cursor-pointer w-full sm:w-auto"
