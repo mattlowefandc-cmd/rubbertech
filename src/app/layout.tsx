@@ -145,7 +145,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="bg-white text-black antialiased overflow-x-hidden flex flex-col min-h-screen selection:bg-black selection:text-white">
+      <body className="antialiased overflow-x-hidden flex flex-col min-h-screen">
         <CartProvider>
           <Header />
           <CartDrawer />
