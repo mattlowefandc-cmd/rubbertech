@@ -83,11 +83,11 @@ export default async function ProductPage({ params }: Props) {
              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" 
                   style={{ backgroundImage: "linear-gradient(#000 1px, transparent 0), linear-gradient(90deg, #000 1px, transparent 0)", backgroundSize: "10% 10%", opacity: 0.03 }} />
              
-             <div className="relative z-10 w-full h-full p-4 lg:p-12">
+             <div className="relative z-10 w-full h-full p-6 lg:p-12">
                <img 
                  src={product.image} 
                  alt={product.name} 
-                 className="w-full h-full object-contain scale-[1.2] lg:scale-110 group-hover:scale-125 transition-transform duration-700" 
+                 className="w-full h-full object-contain scale-100 lg:scale-110 group-hover:scale-[1.05] lg:group-hover:scale-125 transition-transform duration-700" 
                />
              </div>
              
