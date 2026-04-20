@@ -116,19 +116,19 @@ function HeroSection() {
         <div className="absolute inset-0 z-10 w-full max-w-[1720px] mx-auto px-6 h-full flex flex-col justify-between pb-24 pt-[150px] sm:pt-20 sm:justify-end sm:pb-32 pointer-events-none">
           
           {/* Mobile Headlines (< 640px) */}
-          <div className="relative z-20 sm:hidden mt-2">
+          <div className="relative z-20 sm:hidden mt-2 tracking-tight">
             <div className="relative min-h-[140px]">
               <h1
                 ref={mobileH1Ref}
-                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto break-words w-full"
-                style={{ fontSize: "clamp(2rem, 12vw, 160px)" }}
+                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
+                style={{ fontSize: "clamp(1.5rem, 10vw, 160px)" }}
               >
                 PRECISION<br />RUBBER
               </h1>
               <h2
                 ref={mobileH2Ref}
-                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto break-words w-full"
-                style={{ fontSize: "clamp(1.8rem, 11vw, 120px)" }}
+                className="absolute top-0 left-0 font-display font-normal text-black uppercase leading-[1.0] opacity-0 pointer-events-auto whitespace-nowrap"
+                style={{ fontSize: "clamp(1.4rem, 9vw, 120px)" }}
               >
                 ENGINEERED FOR<br />PERFORMANCE
               </h2>
