@@ -1,64 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// Mock database to simulate a DVLA/VRM API response.
-// These simulate what a real data provider would return.
-const MOCK_DATABASE: Record<string, any> = {
-  // Test Registration 1
-  "HN68YTZ": {
-    make: "MERCEDES-BENZ",
-    model: "E-CLASS (W213)",
-    year: "2018",
-    variant: "E220D AMG LINE",
-    color: "GREY",
-    frontTyres: {
-      size: "245/40 R19",
-      speed: "98Y",
-      slug: "245/40R19",
-      label: "FRONT_AXLE // PRIMARY"
-    },
-    rearTyres: {
-      size: "275/35 R19",
-      speed: "100Y",
-      slug: "275/35R19",
-      label: "REAR_AXLE // STAGGERED"
-    }
-  },
-  // Test Registration 2
-  "AB22CDE": {
-    make: "VOLKSWAGEN",
-    model: "GOLF",
-    year: "2022",
-    variant: "R",
-    color: "BLUE",
-    frontTyres: {
-      size: "235/35 R19",
-      speed: "91Y",
-      slug: "235/35R19",
-      label: "ALL_AXLES // SQUARE SETUP"
-    }
-    // no rearTyres -> means square setup
-  },
-  // Test Registration 3 (Track Car Context)
-  "M3GTR": {
-    make: "BMW",
-    model: "M3",
-    year: "2004",
-    variant: "E46 COUPE",
-    color: "SILVER",
-    frontTyres: {
-      size: "225/45 R18",
-      speed: "91Y",
-      slug: "225/45R18",
-      label: "FRONT_AXLE // PRIMARY"
-    },
-    rearTyres: {
-      size: "255/40 R18",
-      speed: "95Y",
-      slug: "255/40R18",
-      label: "REAR_AXLE // STAGGERED"
-    }
-  }
-};
+const API_KEY = '99885A6A-7974-4973-80BB-C7B7136E3A11';
+const API_ENDPOINT = 'https://uk1.ukvehicledata.co.uk/api/datapackage/VehicleData?v=2&api_nullitems=1';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -71,17 +14,60 @@ export async function GET(request: Request) {
     );
   }
 
-  // TODO: Replace this block with your actual VRM API call.
-  // Example: 
-  // const response = await fetch(`https://api.ukvehicledata.co.uk/v2/...&vrm=${reg}`);
-  // const data = await response.json();
+  try {
+    const apiUrl = `${API_ENDPOINT}&auth_apikey=${API_KEY}&key_VRM=${reg}`;
+    const response = await fetch(apiUrl);
+    
+    if (!response.ok) {
+      throw new Error(`API responded with status: ${response.status}`);
+    }
 
-  // MOCK LOGIC: Introduce artificial delay to simulate network latency
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+    const json = await response.json();
+    
+    if (json.Response?.StatusCode !== "Success") {
+      return NextResponse.json({
+        success: false,
+        error: json.Response?.StatusMessage || "Vehicle registration not found."
+      }, { status: 404 });
+    }
 
-  const vehicleInfo = MOCK_DATABASE[reg];
+    const dataItems = json.Response.DataItems;
+    const vehicle = dataItems?.VehicleRegistration;
+    const technical = dataItems?.TechnicalSpecification;
 
-  if (vehicleInfo) {
+    // Map the API structure to our frontend expectation
+    // Note: ukvehicledata structure can vary by package, but standard VehicleData contains these
+    const vehicleInfo = {
+      make: vehicle?.Make || "UNKNOWN",
+      model: vehicle?.Model || "UNKNOWN",
+      year: vehicle?.YearOfManufacture || "UNKNOWN",
+      variant: vehicle?.Vrm || "",
+      engineSize: technical?.Dimensions?.EngineCapacity ? `${technical.Dimensions.EngineCapacity}cc` : null,
+      frontTyres: null as any,
+      rearTyres: null as any
+    };
+
+    // Extract Tyre Sizes if available in TechnicalSpecification
+    const tyreDetails = technical?.Tyre;
+    if (tyreDetails) {
+      if (tyreDetails.Front?.SizeDescription) {
+        vehicleInfo.frontTyres = {
+          size: tyreDetails.Front.SizeDescription,
+          speed: tyreDetails.Front.SpeedIndex || "",
+          slug: tyreDetails.Front.SizeDescription.replace(/\s+/g, ''),
+          label: "FRONT_AXLE // PRIMARY"
+        };
+      }
+      if (tyreDetails.Rear?.SizeDescription) {
+        vehicleInfo.rearTyres = {
+          size: tyreDetails.Rear.SizeDescription,
+          speed: tyreDetails.Rear.SpeedIndex || "",
+          slug: tyreDetails.Rear.SizeDescription.replace(/\s+/g, ''),
+          label: "REAR_AXLE // STAGGERED"
+        };
+      }
+    }
+
     return NextResponse.json({
       success: true,
       data: {
@@ -89,11 +75,13 @@ export async function GET(request: Request) {
         ...vehicleInfo
       }
     });
-  } else {
-    // If not found in mock DB, return a generic or simulated not found
+
+  } catch (error) {
+    console.error("Vehicle API Error:", error);
     return NextResponse.json({
       success: false,
-      error: "Vehicle registration not found. Please try 'HN68YTZ', 'AB22CDE' or 'M3GTR'."
-    }, { status: 404 });
+      error: "Failed to connect to vehicle data service. Please try manual entry."
+    }, { status: 500 });
   }
 }
+

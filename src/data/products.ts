@@ -746,14 +746,23 @@ export const allProducts: TyreProduct[] = [
   ...motorcycleProducts,
 ];
 
-export const featuredProducts = allProducts.filter((p) => p.featured);
-
 export function getProductBySlug(slug: string): TyreProduct | undefined {
   return allProducts.find((p) => p.slug === slug);
 }
 
 export function getProductsByCategory(category: TyreCategory): TyreProduct[] {
   return allProducts.filter((p) => p.category === category);
+}
+
+export function getProductsBySize(sizeString: string): TyreProduct[] {
+  if (!sizeString) return [];
+  
+  const normalize = (s: string) => s.replace(/\s+/g, "").toUpperCase();
+  const target = normalize(sizeString);
+  
+  return allProducts.filter((product) => 
+    product.sizes.some((s) => normalize(s.size).includes(target))
+  );
 }
 
 // FILE COMPLETE ✓
